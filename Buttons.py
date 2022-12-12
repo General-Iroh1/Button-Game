@@ -45,11 +45,12 @@ def Retry():
     Label(screen3,text = "Lets  play a game!").pack()
     Label(screen3,text = "").pack()
     global btn1
-    btn1 = Button(screen3, text = 'Click me !', command = Score)
+    btn1 = Button(screen3, text = 'Click me !',bg='green', command = Score)
     global e
     global f
     btn1.place(x=f, y=e)
-    Button(screen3,text="DONT CLICK ME!",command=GameOver).pack()
+    global btn3
+    btn3 =Button(screen3,text="DONT CLICK ME!",bg='red',command=GameOver)
 def Buttons():
     global screen
     screen = tkinter.Tk()
@@ -58,13 +59,13 @@ def Buttons():
     Label(text = "Lets  play a game!").pack()
     Label(text = "").pack()
     global btn
-    btn = Button(screen, text = 'Click me !', command = Score)
+    btn = Button(screen, text = 'Click me !',bg='green', command = Score)
     global e
     global f
     btn.place(x=f, y=e)
     Label(text = "").pack()
     global btn2
-    btn2 =Button(screen,text="DONT CLICK ME!", bg='blue',command=GameOver)
+    btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver)
     screen.mainloop()
 def Score():
     global l
@@ -110,7 +111,7 @@ def Score():
         if y == 2:
             j = random.randint(0,760)
             k = random.randint(1,1520)
-            btn2.place(x=k, y=j)
+            btn3.place(x=k, y=j)
     c = 0
 global all
 Buttons()
