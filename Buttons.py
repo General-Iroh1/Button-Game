@@ -2,6 +2,255 @@ import tkinter
 from tkinter import *
 import random
 
+#The Screen Is Lava!
+
+
+n8 = 0
+x8 = 0
+s8 = 0
+c8 = 0
+l8 = 1
+y8 = 1
+z8 = 1
+score8 = 0
+e8 = random.randint(0,760)
+f8 = random.randint(1,1520)
+print (e8)
+print (f8)
+fe8 =str(f8)
+ef8 =str(e8)
+def GameOver9():
+    global l8
+    l8 = 1
+    if s8>= 1:
+        screen38.destroy()
+    sscore8 = str(score8)
+    global screen28
+    screen28=Toplevel(screen58)
+    screen28.attributes('-fullscreen', True)
+    screen28.title("Game Over!")
+    Label(screen28,text="You got a score of "+sscore8).pack()
+    Label(screen28,text="Game Over! Better luck next time!").pack()
+    Button(screen28,text="Retry", command=Retry9).pack()
+    Button(screen28,text="Quit", command=quit).pack()
+def Retry9():
+    global y8
+    y8 = 2
+    global l8
+    l8+=1
+    global c8
+    c8+=1
+    global x8
+    if x8 >= 1:
+        score8 == 0
+    global s8
+    s8+=1
+    global screen38
+    screen38 = Toplevel(screen58)
+    screen38.attributes('-fullscreen', True)
+    screen38.title("Buttons, and more buttons!")
+    Label(screen38,text = "Lets  play a game!").pack()
+    Label(screen38,text = "").pack()
+    global btn18
+    btn18 = Button(screen38, text = 'Click me !',bg='green', command = Score9)
+    global e8
+    global f8
+    btn18.place(x=f8, y=e8)
+    global btn38
+    btn38 =Button(screen38,text="DONT CLICK ME!",bg='red',command=GameOver9)
+def Buttons9():
+    global y8
+    y8 = 1
+    global screen58
+    screen58 = Toplevel(screen)
+    screen58.attributes('-fullscreen', True)
+    screen58.title("Buttons, and more buttons!")
+    Label(text = "Lets  play a game!").pack()
+    Label(text = "").pack()
+    global btn8
+    btn8 = Button(screen58, text = 'Click me !',bg='green', command = Score9)
+    global e8
+    global f8
+    btn8.place(x=f8, y=e8)
+    Label(text = "").pack()
+    global btn28
+    btn28 =Button(screen58,text="DONT CLICK ME!", bg='red',command=GameOver9)
+    screen58.mainloop()
+def Score9():
+    global l8
+    global s8
+    global c8
+    global x8
+    global score8
+    if c8 == 1:
+        score8 = 0
+    if s8>= 1:
+        x8 +=1
+    if c8 != 1:
+        x8 = 0
+    global l8
+    if x8 == 1 and l8 == 1:
+        score8 = 0
+    global n8
+    n8+=1
+    if n8 == 1:
+        score8 = 0
+        score8  = score8 + 1
+        print(score8)
+    else:
+        if l8 == 2:
+            score8= score8+1
+            print (score8)
+            global e8
+            global f8
+            e8 = random.randint(0,760)
+            f8 = random.randint(1,1520)
+            btn18.place(x=f8, y=e8)
+        if l8 == 1:
+            score8= score8+1
+            print (score8)
+            e8 = random.randint(0,760)
+            f8 = random.randint(1,1520)
+            btn8.place(x=f8, y=e8)
+        if y8 == 1:
+            j8 = random.randint(0,760)
+            k8 = random.randint(1,1520)
+            btn28.place(x=760, y=370)
+        if y8 == 2:
+            j8 = random.randint(0,760)
+            k8 = random.randint(1,1520)
+            btn38.place(x=760, y=370)
+    c8 = 0
+
+
+#Timed
+
+import time
+def countdown(t):
+    
+    while t:
+        mins, secs = divmod(t, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        t -= 1
+n8 = 0
+x8 = 0
+s8 = 0
+c8 = 0
+l8 = 1
+y8 = 1
+z8 = 1
+score8 = 0
+e8 = random.randint(0,760)
+f8 = random.randint(1,1520)
+print (e8)
+print (f8)
+fe8 =str(f8)
+ef8 =str(e8)
+def GameOver8():
+    global l8
+    l8 = 1
+    if s8>= 1:
+        screen38.destroy()
+    sscore8 = str(score8)
+    global screen28
+    screen28=Toplevel(screen58)
+    screen28.attributes('-fullscreen', True)
+    screen28.title("Game Over!")
+    Label(screen28,text="You got a score of "+sscore8).pack()
+    Label(screen28,text="Game Over! Better luck next time!").pack()
+    Button(screen28,text="Retry", command=Retry8).pack()
+    Button(screen28,text="Quit", command=quit).pack()
+def Retry8():
+    global y8
+    y8 = 2
+    global l8
+    l8+=1
+    global c8
+    c8+=1
+    global x8
+    if x8 >= 1:
+        score8 == 0
+    global s8
+    s8+=1
+    global screen38
+    screen38 = Toplevel(screen58)
+    screen38.attributes('-fullscreen', True)
+    screen38.title("Buttons, and more buttons!")
+    Label(screen38,text = "Lets  play a game!").pack()
+    Label(screen38,text = "").pack()
+    global btn18
+    btn18 = Button(screen38, text = 'Click me !',bg='green', command = Score8)
+    global e8
+    global f8
+    btn18.place(x=f8, y=e8)
+    global btn38
+    btn38 =Button(screen38,text="DONT CLICK ME!",bg='red',command=GameOver8)
+def Buttons81():
+    global y8
+    y8 = 1
+    global screen58
+    screen58 = Toplevel(screen)
+    screen58.attributes('-fullscreen', True)
+    screen58.title("Buttons, and more buttons!")
+    Label(text = "Lets  play a game!").pack()
+    Label(text = "").pack()
+    global btn8
+    btn8 = Button(screen58, text = 'Click me !',bg='green', command = Score8)
+    global e8
+    global f8
+    btn8.place(x=f8, y=e8)
+    Label(text = "").pack()
+    global btn28
+    btn28 =Button(screen58,text="DONT CLICK ME!", bg='red',command=GameOver8)
+    screen58.mainloop()
+def Score8():
+    global l8
+    global s8
+    global c8
+    global x8
+    global score8
+    if c8 == 1:
+        score8 = 0
+    if s8>= 1:
+        x8 +=1
+    if c8 != 1:
+        x8 = 0
+    global l8
+    if x8 == 1 and l8 == 1:
+        score8 = 0
+    global n8
+    n8+=1
+    if n8 == 1:
+        score8 = 0
+        score8  = score8 + 1
+        print(score8)
+    else:
+        if l8 == 2:
+            score8= score8+1
+            print (score8)
+            global e8
+            global f8
+            e8 = random.randint(0,760)
+            f8 = random.randint(1,1520)
+            btn18.place(x=f8, y=e8)
+        if l8 == 1:
+            score8= score8+1
+            print (score8)
+            e8 = random.randint(0,760)
+            f8 = random.randint(1,1520)
+            btn8.place(x=f8, y=e8)
+        if y8 == 1:
+            j8 = random.randint(0,760)
+            k8 = random.randint(1,1520)
+            btn28.place(x=k8, y=j8)
+        if y8 == 2:
+            j8 = random.randint(0,760)
+            k8 = random.randint(1,1520)
+            btn38.place(x=k8, y=j8)
+    c8 = 0
+
 #Normal Mode
 
 n8 = 0
@@ -30,9 +279,9 @@ def GameOver8():
     screen28.title("Game Over!")
     Label(screen28,text="You got a score of "+sscore8).pack()
     Label(screen28,text="Game Over! Better luck next time!").pack()
-    Button(screen28,text="Retry", command=Retry).pack()
+    Button(screen28,text="Retry", command=Retry8).pack()
     Button(screen28,text="Quit", command=quit).pack()
-def Retry():
+def Retry8():
     global y8
     y8 = 2
     global l8
@@ -54,7 +303,7 @@ def Retry():
     btn18 = Button(screen38, text = 'Click me !',bg='green', command = Score8)
     global e8
     global f8
-    btn1.place(x=f8, y=e8)
+    btn18.place(x=f8, y=e8)
     global btn38
     btn38 =Button(screen38,text="DONT CLICK ME!",bg='red',command=GameOver8)
 def Buttons8():
@@ -73,18 +322,17 @@ def Buttons8():
     btn8.place(x=f8, y=e8)
     Label(text = "").pack()
     global btn28
-    btn28 =Button(screen5,text="DONT CLICK ME!", bg='red',command=GameOver8)
+    btn28 =Button(screen58,text="DONT CLICK ME!", bg='red',command=GameOver8)
     screen58.mainloop()
 def Score8():
     global l8
     global s8
     global c8
+    global x8
     global score8
     if c8 == 1:
-        global score
         score8 = 0
     if s8>= 1:
-        global x
         x8 +=1
     if c8 != 1:
         x8 = 0
@@ -105,10 +353,10 @@ def Score8():
             global f8
             e8 = random.randint(0,760)
             f8 = random.randint(1,1520)
-            btn18.place(x=f, y=e)
+            btn18.place(x=f8, y=e8)
         if l8 == 1:
-            score= score+1
-            print (score)
+            score8= score8+1
+            print (score8)
             e8 = random.randint(0,760)
             f8 = random.randint(1,1520)
             btn8.place(x=f8, y=e8)
@@ -123,6 +371,7 @@ def Score8():
     c8 = 0
 
 #Button Maddness
+
 n = 0
 x = 0
 s = 0
@@ -256,9 +505,13 @@ def Starting_Screen():
     screen.title("Buttons, and more buttons!")
     Label(text = "What gamemode would you like to play?").pack()
     Label(text = "").pack()
-    Button(screen, text = 'Button Madness!',bg='orange', command = Buttons).pack()
+    Button(screen, text = 'Button Madness!',bg='red', command = Buttons).pack()
     Label(text = "").pack()
-    Button(screen,text="Normal mode", bg='light blue',command=Buttons8).pack()
+    Button(screen,text="Normal mode", bg='Yellow',command=Buttons8).pack()
+    Label(text="").pack()
+    Button(screen,text="Hot button", bg="green",command=Buttons81).pack()
+    Label(text="").pack()
+    Button(screen,text="The screen is lava!",command=Buttons9).pack()
     screen.mainloop()
 global all
 Starting_Screen()
