@@ -49,15 +49,15 @@ def Retry9():
     screen38 = Toplevel(screen58)
     screen38.attributes('-fullscreen', True)
     screen38.title("Buttons, and more buttons!")
-    Label(screen38,text = "Lets  play a game!").pack()
-    Label(screen38,text = "").pack()
-    global btn18
-    btn18 = Button(screen38, text = 'Click me !',bg='green', command = Score9)
+
     global e8
     global f8
-    btn18.place(x=f8, y=e8)
+
     global btn38
-    btn38 =Button(screen38,text="DONT CLICK ME!",bg='red',command=GameOver9)
+    btn38 =Button(screen38, font='algerian',text="DONT CLICK ME!", width=1536, height=1536, bg='red',command=GameOver9).pack()
+    global btn18
+    btn18 = Button(screen38, text = 'Click me !',bg='green', command = Score9)
+    btn18.place(x=f8, y=e8)
 def Buttons9():
     global y8
     y8 = 1
@@ -65,16 +65,15 @@ def Buttons9():
     screen58 = Toplevel(screen)
     screen58.attributes('-fullscreen', True)
     screen58.title("Buttons, and more buttons!")
-    Label(text = "Lets  play a game!").pack()
-    Label(text = "").pack()
-    global btn8
-    btn8 = Button(screen58, text = 'Click me !',bg='green', command = Score9)
+
     global e8
     global f8
-    btn8.place(x=f8, y=e8)
-    Label(text = "").pack()
+
     global btn28
-    btn28 =Button(screen58,text="DONT CLICK ME!", bg='red',command=GameOver9)
+    btn28 =Button(screen58, font='algerian',text="DONT CLICK ME!", width=1536, height=1536, bg='red',command=GameOver9).pack()
+    global btn8
+    btn8 = Button(screen58, text = 'Click me !',bg='green', command = Score9)
+    btn8.place(x=f8, y=e8)
     screen58.mainloop()
 def Score9():
     global l8
@@ -112,14 +111,6 @@ def Score9():
             e8 = random.randint(0,760)
             f8 = random.randint(1,1520)
             btn8.place(x=f8, y=e8)
-        if y8 == 1:
-            j8 = random.randint(0,760)
-            k8 = random.randint(1,1520)
-            btn28.place(x=760, y=370)
-        if y8 == 2:
-            j8 = random.randint(0,760)
-            k8 = random.randint(1,1520)
-            btn38.place(x=760, y=370)
     c8 = 0
 
 
