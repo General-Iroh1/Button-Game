@@ -1,19 +1,37 @@
-import tkinter
 
-master=tkinter.Tk()
-master.title("pack() method")
-master.geometry("450x350")
+import time
+from tkinter import *
+from tkinter import messagebox
+ 
+ 
+root = Tk()
+b=0
+root.geometry("300x250")
+  
+root.title("Time Counter")
+hour=StringVar()
+minute=StringVar()
+second=StringVar()
+second.set("10")
+secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
+secondEntry.place(x=180,y=20)
+def submit():
+    try:
+        temp = int(second.get())
+    except:
+        print("Please input the right value")
+    while temp >-1:
+        secs = divmod(temp,60)
+        root.update()
+        time.sleep(1)
+        if (temp == 0):
+            global b
+            b+=1
+            messagebox.showinfo("Time Countdown", "Time's up ")
+        temp -= 1
+btn = Button(root, text='Set Time Countdown', bd='5',
+             command= submit)
+btn.place(x = 70,y = 120)
+  
 
-button1=tkinter.Button(master, text="LEFT")
-button1.pack(side=tkinter.LEFT)
-
-button2=tkinter.Button(master, text="RIGHT")
-button2.pack(side=tkinter.RIGHT)
-
-button3=tkinter.Button(master, text="TOP")
-button3.pack(side=tkinter.TOP)
-
-button4=tkinter.Button(master, text="BOTTOM")
-button4.pack(side=tkinter.BOTTOM)
-
-master.mainloop()
+root.mainloop()
