@@ -106,6 +106,7 @@ def Score4():
 
 #Timed
 
+b = 1
 n = 0
 x = 0
 s = 0
@@ -134,6 +135,8 @@ def GameOver3():
     Button(screen2,text="Retry", command=Retry3).pack()
     Button(screen2,text="Quit", command=quit).pack()
 def Retry3():
+    global y
+    y+=1
     global l
     l+=1
     global c
@@ -154,8 +157,17 @@ def Retry3():
     global e
     global f
     btn1.place(x=f, y=e)
-    Button(screen3,text="DONT CLICK ME!",command=GameOver3).pack()
+    global btn3
+    btn3 =Button(screen3,bg='red',text="DONT CLICK ME!",command=GameOver3)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn3.place(x=k, y=j)
 def Buttons3():
+    global b
+    if b == 1:
+        temp = 5
+    if temp == 0:
+        GameOver3()
     global screen
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
@@ -169,7 +181,10 @@ def Buttons3():
     btn.place(x=f, y=e)
     Label(text = "").pack()
     global btn2
-    btn2 =Button(screen,text="DONT CLICK ME!", bg='blue',command=GameOver3)
+    btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver3)
+    time.sleep(1)
+    temp -= 1
+    b+=1
     screen.mainloop()
 def Score3():
     global l
@@ -231,19 +246,17 @@ def SB3():
     secondEntry.place(x=180,y=20)
     def submit():
         try:
-            temp = int(second.get())
+            global temp
+            temp = 30
         except:
             print("Please input the right value")
         while temp >-1:
+            global b
             secs = divmod(temp,60)
             root.update()
             time.sleep(1)
-            if (temp == 0):
-                if b >= 1:
-                    Buttons3()
-                global b
-                b+=1
-                messagebox.showinfo("Time Countdown", "Time's up ")
+            if (temp == 30):
+                Buttons3()
             temp -= 1
     btn = Button(root, text='Set Time Countdown', bd='5',
                 command= submit)
