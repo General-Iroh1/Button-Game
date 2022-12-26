@@ -113,6 +113,7 @@ s = 0
 c = 0
 l = 1
 y = 1
+m = 1
 score = 0
 e = random.randint(0,760)
 f = random.randint(1,1520)
@@ -163,11 +164,10 @@ def Retry3():
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
 def Buttons3():
-    global b
-    if b == 1:
-        temp = 5
-    if temp == 0:
-        GameOver3()
+    global m
+    if m == 2:
+        if temp == 0:
+            GameOver3()
     global screen
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
@@ -182,12 +182,13 @@ def Buttons3():
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver3)
-    while temp > 0:
-        time.sleep(1)
-        temp -= 1
-        b+=1
     screen.mainloop()
 def Score3():
+    global m
+    if m < 2:
+        p()
+    global b
+    global temp
     global l
     global s
     global c
@@ -233,6 +234,19 @@ def Score3():
             k = random.randint(1,1520)
             btn2.place(x=k, y=j)
     c = 0
+
+def p():
+    global m
+    m+=1
+    if b == 1:
+            global temp
+            temp = 5
+    time.sleep(1)
+    temp -= 1
+    if temp == 0:
+        GameOver3()
+    else:
+        Score3()
 
 def SB3():
     root = Tk()
