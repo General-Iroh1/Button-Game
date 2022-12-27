@@ -109,6 +109,7 @@ def Score4():
 b = 1
 n = 0
 x = 0
+h = 1
 s = 0
 c = 0
 l = 1
@@ -164,10 +165,9 @@ def Retry3():
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
 def Buttons3():
-    global m
-    if m == 2:
-        if temp == 0:
-            GameOver3()
+    global temp
+    global b
+    global h
     global screen
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
@@ -182,11 +182,16 @@ def Buttons3():
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver3)
+    if b == 1: 
+        temp = 5
+    b+=1
+    time.sleep(1)
+    temp -= 1
+    if temp == 0:
+        GameOver3()
     screen.mainloop()
 def Score3():
     global m
-    if m < 2:
-        p()
     global b
     global temp
     global l
@@ -234,51 +239,9 @@ def Score3():
             k = random.randint(1,1520)
             btn2.place(x=k, y=j)
     c = 0
+    Buttons3()
 
-def p():
-    global m
-    m+=1
-    if b == 1:
-            global temp
-            temp = 5
-    time.sleep(1)
-    temp -= 1
-    if temp == 0:
-        GameOver3()
-    else:
-        Score3()
 
-def SB3():
-    root = Tk()
-    root.geometry("300x250")
-  
-    root.title("Time Counter")
-    hour=StringVar()
-    minute=StringVar()
-    second=StringVar()
-    second.set("10")
-    secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
-    secondEntry.place(x=180,y=20)
-    def submit():
-        try:
-            global temp
-            temp = 30
-        except:
-            print("Please input the right value")
-        while temp >-1:
-            global b
-            secs = divmod(temp,60)
-            root.update()
-            time.sleep(1)
-            if (temp == 30):
-                Buttons3()
-            temp -= 1
-    btn = Button(root, text='Set Time Countdown', bd='5',
-                command= submit)
-    btn.place(x = 70,y = 120)
-  
-
-    root.mainloop()
 #Button Madness
 
 n = 0
