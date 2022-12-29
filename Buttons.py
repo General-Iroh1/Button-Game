@@ -182,13 +182,18 @@ def Buttons3():
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver3)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn2.place(x=k, y=j)
     if b == 1: 
         temp = 5
+    while b >= 2:
+        b+=1
+        time.sleep(1)
+        temp -= 1
+        if temp == 0:
+            GameOver3()
     b+=1
-    time.sleep(1)
-    temp -= 1
-    if temp == 0:
-        GameOver3()
     screen.mainloop()
 def Score3():
     global m
