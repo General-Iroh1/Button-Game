@@ -111,6 +111,7 @@ n = 0
 x = 0
 h = 1
 s = 0
+q = 0
 c = 0
 l = 1
 y = 1
@@ -164,7 +165,17 @@ def Retry3():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
+def noob():
+    screen9 = tkinter.Tk()
+    screen9.attributes('-fullscreen', True)
+    screen9.title("Buttons, and more buttons!")
+    Label(text = 'You cheated!').pack()
+    Label(text = 'Next time dont click the button TWICE!').pack()
+    Label(text = '3 second penalty')
+
+
 def Buttons3():
+    global q
     global temp
     global b
     global h
@@ -185,15 +196,18 @@ def Buttons3():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn2.place(x=k, y=j)
+    if q == 1:
+        noob()
     if b == 1: 
         temp = 5
-    while b >= 2:
-        b+=1
-        time.sleep(1)
-        temp -= 1
-        if temp == 0:
-            GameOver3()
     b+=1
+    q+=1
+    time.sleep(1)
+    temp -= 1
+    if temp == 0:
+        GameOver3()
+    b+=1
+    q = 0
     screen.mainloop()
 def Score3():
     global m
