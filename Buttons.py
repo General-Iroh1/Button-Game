@@ -46,7 +46,7 @@ def Retry4():
     screen3 = Toplevel(screen)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
-    Button(screen3,width= '1523',height= '1523',text="DONT CLICK ME!", bg='red',command=GameOver4).pack()
+    Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
     global btn1
     btn1 = Button(screen3, text = 'Click me !', command = Score4)
     global e
@@ -58,7 +58,7 @@ def Buttons4():
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
     Label(text = "Lets  play a game!").pack()
-    Button(screen,  width= '1523',height= '1523',text="DONT CLICK ME!", bg='red',command=GameOver4).pack()
+    Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
     global btn
     btn = Button(screen, text = 'Click me !', command = Score4)
     global e
@@ -161,7 +161,7 @@ def Retry3():
     global f
     btn1.place(x=f, y=e)
     global btn3
-    btn3 =Button(screen3,bg='red',text="DONT CLICK ME!",command=GameOver3)
+    btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
@@ -192,7 +192,7 @@ def Buttons3():
     btn.place(x=f, y=e)
     Label(text = "").pack()
     global btn2
-    btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver3)
+    btn2 =Button(screen,text="Click me ;)",command=GameOver3)
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn2.place(x=k, y=j)
@@ -314,7 +314,7 @@ def Retry2():
     global f
     btn1.place(x=f, y=e)
     global btn3
-    btn3 =Button(screen3,bg='red',text="DONT CLICK ME!",command=GameOver2)
+    btn3 =Button(screen3,text="Click me ;)",command=GameOver2)
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
@@ -332,15 +332,15 @@ def Buttons2():
     btn.place(x=f, y=e)
     Label(text = "").pack()
     global btn2
-    btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver2)
+    btn2 =Button(screen,text="Click me ;)",command=GameOver2)
     screen.mainloop()
 def newbutton():
     if score == 1 or 2 or 3 or 4 or 5 or 10 or 20 or 30 or 40 or 50 or 60 or 70 or 75 or 100:
         global btn2
-        btn2 =Button(screen,text="DONT CLICK ME!", bg='red',command=GameOver2)
+        btn2 =Button(screen,text="Click me ;)",command=GameOver2)
     if y == 2 and score == 1 or 2 or 3 or 4 or 5 or 10 or 20 or 30 or 40 or 50 or 60 or 70 or 75 or 100:
         global btn3
-        btn3 =Button(screen3,text="DONT CLICK ME!", bg='red',command=GameOver2)
+        btn3 =Button(screen3,text="Click me ;)",command=GameOver2)
 def Score2():
     global l
     global s
@@ -442,7 +442,7 @@ def Retry1():
     global f
     btn1.place(x=f, y=e)
     global btn3
-    btn3 =Button(screen3,text="DONT CLICK ME!",command=GameOver1)
+    btn3 =Button(screen3,text="Click me ;)",command=GameOver1)
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
@@ -460,7 +460,7 @@ def Buttons1():
     btn.place(x=f, y=e)
     Label(text = "").pack()
     global btn2
-    btn2 =Button(screen,text="DONT CLICK ME!", bg='blue',command=GameOver1)
+    btn2 =Button(screen,text="Click me ;)",command=GameOver1)
     screen.mainloop()
 def Score1():
     global l
@@ -522,13 +522,13 @@ def Starting_Screen():
     global f
     Label(text = "").pack()
 
-    Button(screen0,text="Button Mayhem!", bg='blue',command=Buttons2).pack()
+    Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
     Label(text = "").pack()
 
-    Button(screen0,text="Timed", bg='blue',command=Buttons3).pack()
+    Button(screen0,text="Timed(W.I.P)",command=Buttons3).pack()
     Label(text = "").pack()
 
-    Button(screen0,text="The screen is lava!", bg='blue',command=Buttons4).pack()
+    Button(screen0,text="The screen is lava!",command=Buttons4).pack()
     screen0.mainloop()
 global all
 Starting_Screen()
