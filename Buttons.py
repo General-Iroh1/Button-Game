@@ -190,14 +190,9 @@ def Buttons3():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn2.place(x=k, y=j)
-    if b == 1: 
-        temp = 5
-    b+=1
-    time.sleep(1)
-    temp -= 1
     if temp == 0:
         GameOver3()
-    b+=1
+    b+=1 
     q = 0
     if b < 6:
         screen.mainloop()
@@ -252,7 +247,36 @@ def Score3():
     c = 0
     Buttons3()
 
-
+def SB3():
+    root = Tk()
+    root.geometry("300x250")
+  
+    root.title("Time Counter")
+    hour=StringVar()
+    minute=StringVar()
+    second=StringVar()
+    second.set("10")
+    secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
+    secondEntry.place(x=180,y=20)
+    def submit():
+        global temp
+        try:
+            temp = int(second.get())
+        except:
+            print("Please input the right value")
+        while temp >-1:
+            secs = divmod(temp,60)
+            root.update()
+            time.sleep(1)
+            if (temp == 0):
+                global b
+                b+=1
+                messagebox.showinfo("Time Countdown", "Time's up ")
+            temp -= 1
+    btn = Button(root, text='Set Time Countdown', bd='5',
+             command= submit)
+    btn.place(x = 70,y = 120)
+    Buttons3()
 #Button Madness
 
 n = 0
@@ -517,7 +541,7 @@ def Starting_Screen():
     Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
     Label(text = "").pack()
 
-    Button(screen0,text="Timed(W.I.P)",command=Buttons3).pack()
+    Button(screen0,text="Timed(W.I.P)",command=SB3).pack()
     Label(text = "").pack()
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
