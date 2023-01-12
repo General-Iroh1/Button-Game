@@ -249,14 +249,12 @@ def Score3():
 def SB3():
     root = Tk()
     root.attributes('-fullscreen', True)
-  
     root.title("Time Counter")
-    hour=StringVar()
-    minute=StringVar()
     second=StringVar()
     second.set("10")
+    Label(root, text='This time is in seconds!').pack()
     secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
-    secondEntry.place(x=180,y=20)
+    secondEntry.place(x=760,y=380)
     def submit():
 
         global temp
@@ -273,9 +271,8 @@ def SB3():
                 GameOver3()
                 messagebox.showinfo("Time Countdown", "Time's up ")
             temp -= 1
-    btn = Button(root, text='Set Time Countdown', bd='5',
-             command= submit)
-    btn.place(x = 70,y = 120)
+    btn = Button(root, text='Set Time Countdown', bd='5',command= submit)
+    btn.place(x = 720,y = 520)
 #Button Madness
 
 n = 0

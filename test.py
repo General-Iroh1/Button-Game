@@ -12,7 +12,7 @@ root.title("Time Counter")
 hour=StringVar()
 minute=StringVar()
 second=StringVar()
-second.set("10")
+second.set("")
 secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
 secondEntry.place(x=180,y=20)
 def submit():
@@ -21,7 +21,6 @@ def submit():
     except:
         print("Please input the right value")
     while temp >-1:
-        secs = divmod(temp,60)
         root.update()
         time.sleep(1)
         if (temp == 0):
