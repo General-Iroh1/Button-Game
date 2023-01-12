@@ -194,8 +194,7 @@ def Buttons3():
         GameOver3()
     b+=1 
     q = 0
-    if b < 6:
-        screen.mainloop()
+    screen.mainloop()
 def Score3():
     global m
     global b
@@ -249,7 +248,7 @@ def Score3():
 
 def SB3():
     root = Tk()
-    root.geometry("300x250")
+    root.attributes('-fullscreen', True)
   
     root.title("Time Counter")
     hour=StringVar()
@@ -259,6 +258,7 @@ def SB3():
     secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
     secondEntry.place(x=180,y=20)
     def submit():
+
         global temp
         try:
             temp = int(second.get())
@@ -268,15 +268,14 @@ def SB3():
             secs = divmod(temp,60)
             root.update()
             time.sleep(1)
+            Buttons3()
             if (temp == 0):
-                global b
-                b+=1
+                GameOver3()
                 messagebox.showinfo("Time Countdown", "Time's up ")
             temp -= 1
     btn = Button(root, text='Set Time Countdown', bd='5',
              command= submit)
     btn.place(x = 70,y = 120)
-    Buttons3()
 #Button Madness
 
 n = 0
