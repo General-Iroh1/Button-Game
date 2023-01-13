@@ -251,7 +251,7 @@ def SB3():
     root.attributes('-fullscreen', True)
     root.title("Time Counter")
     second=StringVar()
-    second.set("10")
+    second = ("")
     Label(root, text='This time is in seconds!').pack()
     secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
     secondEntry.place(x=760,y=380)
@@ -266,7 +266,6 @@ def SB3():
             secs = divmod(temp,60)
             root.update()
             time.sleep(1)
-            Buttons3()
             if (temp == 0):
                 GameOver3()
                 messagebox.showinfo("Time Countdown", "Time's up ")
