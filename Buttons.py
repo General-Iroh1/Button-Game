@@ -170,7 +170,6 @@ def Retry3():
 
 def Buttons3():
     global q
-    global temp
     global b
     global h
     global screen
@@ -190,8 +189,6 @@ def Buttons3():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn2.place(x=k, y=j)
-    if temp == 0:
-        GameOver3()
     b+=1 
     q = 0
     screen.mainloop()
@@ -249,29 +246,30 @@ def Score3():
 def SB3():
     root = Tk()
     root.attributes('-fullscreen', True)
+  
     root.title("Time Counter")
     second=StringVar()
-    second = ("")
-    Label(root, text='This time is in seconds!').pack()
+    second.set("")
     secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
+    secondEntry.place(x=180,y=20)
     secondEntry.place(x=760,y=380)
     def submit():
-
-        global temp
         try:
             temp = int(second.get())
         except:
             print("Please input the right value")
         while temp >-1:
-            secs = divmod(temp,60)
             root.update()
             time.sleep(1)
-            if (temp == 0):
-                GameOver3()
+            if (temp == 0):             
                 messagebox.showinfo("Time Countdown", "Time's up ")
             temp -= 1
-    btn = Button(root, text='Set Time Countdown', bd='5',command= submit)
+    btn = Button(root, text='Set Time Countdown', bd='5',
+                 command= submit)
     btn.place(x = 720,y = 520)
+  
+
+    root.mainloop()
 #Button Madness
 
 n = 0
