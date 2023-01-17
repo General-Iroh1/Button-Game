@@ -23,8 +23,6 @@ def SB3():
             root.update()
             time.sleep(1)
             if (temp == 0):
-                global b
-                b+=1
                 messagebox.showinfo("Time Countdown", "Time's up ")
             temp -= 1
     btn = Button(root, text='Set Time Countdown', bd='5',

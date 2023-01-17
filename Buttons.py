@@ -251,7 +251,6 @@ def SB3():
     second=StringVar()
     second.set("")
     secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
-    secondEntry.place(x=180,y=20)
     secondEntry.place(x=760,y=380)
     def submit():
         try:
