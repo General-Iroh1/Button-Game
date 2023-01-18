@@ -1,33 +1,28 @@
-
 import time
-from tkinter import *
-from tkinter import messagebox
- 
-def SB3():
-    root = Tk()
-    b=0
-    root.geometry("300x250")
+import tkinter
+def testscreen():
+    screen = tkinter.Tk()
+    screen.attributes('-fullscreen', True)
+    screen.title("Buttons, and more buttons!")
+    
+# define the countdown func.
+def countdown(t):
+    t = input("Enter the time in seconds: ")
+    
+    while t:
+        mins, secs = divmod(t, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        t -= 1
+      
+    print('Fire in the hole!!')
   
-    root.title("Time Counter")
-    second=StringVar()
-    second.set("")
-    secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
-    secondEntry.place(x=180,y=20)
-    secondEntry.place(x=760,y=380)
-    def submit():
-        try:
-            temp = int(second.get())
-        except:
-            print("Please input the right value")
-        while temp >-1:
-            root.update()
-            time.sleep(1)
-            if (temp == 0):
-                messagebox.showinfo("Time Countdown", "Time's up ")
-            temp -= 1
-    btn = Button(root, text='Set Time Countdown', bd='5',
-                 command= submit)
-    btn.place(x = 720,y = 520)
   
-
-    root.mainloop()
+# input time in seconds
+t = input("Enter the time in seconds: ")
+  
+# function call
+countdown(int(t))
+global all
+testscreen()
