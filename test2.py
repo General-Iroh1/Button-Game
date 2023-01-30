@@ -30,29 +30,22 @@ def testscreen():
         Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
     if l> 1:
         Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
+    Button(screen,text="Confirm", command=countdown).pack()
     Label(screen,text="Remember, this is measured in minutes!").pack()
     screen.mainloop()
 import tkinter
 from tkinter import *
 import time
-def countdown(t):
-    
+def countdown():
+    global l
+    t = l
     while t:
-        
         mins, secs = divmod(t, 60)
-        timer = '{:02d}:{:02d}'.format(mins)
-        print(timer, end="\r")
+        print(l, end="\r")
         time.sleep(1)
-        t -= 1
+        t -= 0.0166666667
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(screen,text="hi").pack()
-    Button(screen,text="start timer", command=countdown).pack()
-  
-  
-# input time in seconds
-t = l
-countdown(int(t))
 global all
 testscreen()

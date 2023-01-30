@@ -18,7 +18,7 @@ def countdown(t):
   
   
 # input time in seconds
-t = l
+t = 0
 def testscreen():
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
