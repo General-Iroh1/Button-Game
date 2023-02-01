@@ -243,32 +243,6 @@ def Score3():
     c = 0
     Buttons3()
 
-def SB3():
-    root = Tk()
-    root.attributes('-fullscreen', True)
-  
-    root.title("Time Counter")
-    second=StringVar()
-    second.set("")
-    secondEntry= Entry(root, width=3, font=("Arial",18,""),textvariable=second)
-    secondEntry.place(x=760,y=380)
-    def submit():
-        try:
-            temp = int(second.get())
-        except:
-            print("Please input the right value")
-        while temp >-1:
-            root.update()
-            time.sleep(1)
-            if (temp == 0):             
-                messagebox.showinfo("Time Countdown", "Time's up ")
-            temp -= 1
-    btn = Button(root, text='Set Time Countdown', bd='5',
-                 command= submit)
-    btn.place(x = 720,y = 520)
-  
-
-    root.mainloop()
 #Button Madness
 
 n = 0
@@ -533,10 +507,56 @@ def Starting_Screen():
     Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
     Label(text = "").pack()
 
-    Button(screen0,text="Timed(W.I.P)",command=SB3).pack()
+    Button(screen0,text="Timed(W.I.P)",command=Test).pack()
     Label(text = "").pack()
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
     screen0.mainloop()
+def Test():
+    l=1
+    hi =  tkinter.Tk()
+    downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
+    uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
+    def up():
+        global l
+        l +=1
+        screen.after(1, testscreen)
+    hi.withdraw()
+    def down():
+        global l
+        l-=1
+        screen.after(1, testscreen)
+    def testscreen():
+        global screen
+        screen = Toplevel(hi)
+        screen.attributes('-fullscreen', True)
+        screen.title("Buttons, and more buttons!")
+        if l ==5:
+            Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
+        if l < 5:
+            Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
+        Label(screen,text=l,font=('Calibri', 26)).pack()
+        if l == 1:
+            Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
+        if l> 1:
+            Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
+        Button(screen,text="Confirm", command=countdown).pack()
+        Label(screen,text="Remember, this is measured in minutes!").pack()
+        screen.mainloop()
+        def countdown():
+            global l
+            t = l 
+            while t>0:
+                mins, secs = divmod(l, 60)
+                print(l, end="\r")
+                time.sleep(1)
+                l -= 0.0166666667
+                if l==0 or l<0:
+                    screen2 = Toplevel(hi)
+                    screen2.attributes('-fullscreen', True)
+                    screen2.title("Buttons, and more buttons!")
+                    Label(screen2,text="Great job!")
+                    break
+
 global all
 Starting_Screen()

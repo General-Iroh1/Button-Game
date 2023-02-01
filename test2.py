@@ -21,11 +21,11 @@ def testscreen():
     screen = Toplevel(hi)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(screen,text=l,font=('Calibri', 26)).pack()
     if l ==5:
         Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
     if l < 5:
         Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
+    Label(screen,text=l,font=('Calibri', 26)).pack()
     if l == 1:
         Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
     if l> 1:
@@ -40,7 +40,7 @@ def countdown():
     global l
     t = l 
     while t>0:
-        mins, secs = divmod(t, 60)
+        mins, secs = divmod(l, 60)
         print(l, end="\r")
         time.sleep(1)
         l -= 0.0166666667
@@ -49,6 +49,7 @@ def countdown():
             screen2.attributes('-fullscreen', True)
             screen2.title("Buttons, and more buttons!")
             Label(screen2,text="Great job!")
-    
+            break
+
 global all
 testscreen()
