@@ -38,13 +38,12 @@ from tkinter import *
 import time
 def countdown():
     global l
-    t = l 
+    t = l*60
     while t>0:
-        mins, secs = divmod(l, 60)
-        print(l, end="\r")
+        print(t, end="\r")
         time.sleep(1)
-        l -= 0.0166666667
-        if l==0 or l<0:
+        t -=1
+        if t==0 or t<0:
             screen2 = Toplevel(hi)
             screen2.attributes('-fullscreen', True)
             screen2.title("Buttons, and more buttons!")

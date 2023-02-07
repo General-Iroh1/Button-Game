@@ -514,21 +514,19 @@ def Starting_Screen():
     screen0.mainloop()
 def Test():
     l=1
-    hi =  tkinter.Tk()
     downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
     uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
     def up():
         global l
         l +=1
         screen.after(1, testscreen)
-    hi.withdraw()
     def down():
         global l
         l-=1
         screen.after(1, testscreen)
     def testscreen():
         global screen
-        screen = Toplevel(hi)
+        screen = Toplevel()
         screen.attributes('-fullscreen', True)
         screen.title("Buttons, and more buttons!")
         if l ==5:
@@ -552,11 +550,12 @@ def Test():
                 time.sleep(1)
                 l -= 0.0166666667
                 if l==0 or l<0:
-                    screen2 = Toplevel(hi)
+                    screen2 = Toplevel()
                     screen2.attributes('-fullscreen', True)
                     screen2.title("Buttons, and more buttons!")
                     Label(screen2,text="Great job!")
                     break
+        testscreen()
 
 global all
 Starting_Screen()
