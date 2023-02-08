@@ -1,33 +1,25 @@
-import tkinter
 from tkinter import *
-import time
-def countdown(t):
-    
-    while t:
-        
-        mins, secs = divmod(t, 60)
-        timer = '{:02d}:{:02d}'.format(mins)
-        print(timer, end="\r")
-        time.sleep(1)
-        t -= 1
-    screen = tkinter.Tk()
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
-    Label(screen,text="hi").pack()
-    Button(screen,text="start timer", command=countdown).pack()
-  
-  
-# input time in seconds
-t = 0
-def testscreen():
-    screen = tkinter.Tk()
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
-    Label(screen,text="hi").pack()
-    Button(screen,text="start timer", command=countdown).pack()
-  
-# function call
-countdown(int(t))
 
+def countdown():
+    global l
+    global skreen
+    l = 1
+    t = l*60
+    skreen = Toplevel()
+    skreen.attributes('-fullscreen', True)
+    skreen.title("Countdown")
+    time1 = Label(skreen)
+    time1.pack()
+    update_screen(skreen, time1, t)
+def update_screen(skreen, time1, t):
+    if t > 0:
+        time1.config(text=t)
+        skreen.after(1000, update_screen, skreen, time1, t-1)
+    else:
+        skreen.destroy()
+        screen2 = Toplevel()
+        screen2.attributes('-fullscreen', True)
+        screen2.title("Buttons, and more buttons!")
+        Label(screen2,text="Great job!")
+countdown()
 global all
-testscreen()

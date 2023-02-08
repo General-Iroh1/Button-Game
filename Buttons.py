@@ -512,18 +512,45 @@ def Starting_Screen():
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
     screen0.mainloop()
-def Test():
-    l=1
-    downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
-    uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
-    def up():
+def up():
         global l
         l +=1
         screen.after(1, testscreen)
-    def down():
+def down():
         global l
         l-=1
         screen.after(1, testscreen)
+#writen by chat GPT, working on how to fix some errors.
+def countdown():
+    global l
+    global skreen
+    t = l*60
+    skreen = Toplevel()
+    skreen.attributes('-fullscreen', True)
+    skreen.title("Countdown")
+    time1 = Label(skreen)
+    time1.pack()
+    update_screen(skreen, time1, t)
+def update_screen(skreen, time1, t):
+    if t > 0:
+        skreen.after(1000, update_screen, skreen, time1, t-1)
+    else:
+        skreen
+        screen2 = Toplevel()
+        screen2.attributes('-fullscreen', True)
+        screen2.title("Buttons, and more buttons!")
+        Label(screen2,text="Great job!")
+#written by me
+def Test():
+    global l
+    l=1
+    global testscreen
+    screenPLACEHOLDER = Toplevel()
+    screenPLACEHOLDER.attributes('-fullscreen', True)
+    screenPLACEHOLDER.title("Buttons, and more buttons!")
+    downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
+    uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
+    screenPLACEHOLDER.withdraw()
     def testscreen():
         global screen
         screen = Toplevel()
@@ -541,21 +568,6 @@ def Test():
         Button(screen,text="Confirm", command=countdown).pack()
         Label(screen,text="Remember, this is measured in minutes!").pack()
         screen.mainloop()
-        def countdown():
-            global l
-            t = l 
-            while t>0:
-                mins, secs = divmod(l, 60)
-                print(l, end="\r")
-                time.sleep(1)
-                l -= 0.0166666667
-                if l==0 or l<0:
-                    screen2 = Toplevel()
-                    screen2.attributes('-fullscreen', True)
-                    screen2.title("Buttons, and more buttons!")
-                    Label(screen2,text="Great job!")
-                    break
-        testscreen()
-
+    testscreen()
 global all
 Starting_Screen()
