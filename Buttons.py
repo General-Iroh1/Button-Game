@@ -154,7 +154,11 @@ def Retry3():
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
     Label(screen3,text = "Lets  play a game!").pack()
-    Label(screen3,text = "").pack()
+    global t1
+    global time2
+    t1 = l*60
+    time2 = Label(text = t1)
+    time2.pack()
     global btn1
     btn1 = Button(screen3, text = 'Click me !', command = Score3)
     global e
@@ -165,6 +169,7 @@ def Retry3():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
+    countdown1()
 
 
 
@@ -183,7 +188,11 @@ def Buttons3():
     global e
     global f
     btn.place(x=f, y=e)
-    Label(text = "").pack()
+    global time1
+    global t
+    t = l*60
+    time1 = Label(text = t)
+    time1.pack()
     global btn2
     btn2 =Button(screen,text="Click me ;)",command=GameOver3)
     j = random.randint(0,760)
@@ -191,11 +200,30 @@ def Buttons3():
     btn2.place(x=k, y=j)
     b+=1 
     q = 0
+    countdown()
     screen.mainloop()
+def countdown():
+    global l
+    t = l*60
+
+    update_screen(screen, time1, t)
+def update_screen(screen, time1, t):
+        if t > 0:
+            screen.after(1000, update_screen, screen, time1, t-1)
+        else:
+            GameOver3()
+def countdown1():
+    global l
+
+    update_screen1(screen3, time2, t1)
+def update_screen1(screen3, time2, t1):
+        if l > 0:
+            screen3.after(1000, update_screen1, screen3, time2, t1-1)
+        else:
+            GameOver3()
 def Score3():
     global m
     global b
-    global temp
     global l
     global s
     global c
@@ -225,7 +253,7 @@ def Score3():
             global f
             e = random.randint(0,760)
             f = random.randint(1,1520)
-            btn1.place(x=f, y=e)
+            btn.place(x=f, y=e)
         if l == 1:
             score= score+1
             print (score)
@@ -521,25 +549,6 @@ def down():
         l-=1
         screen.after(1, testscreen)
 #writen by chat GPT, working on how to fix some errors.
-def countdown():
-    global l
-    global skreen
-    t = l*60
-    skreen = Toplevel()
-    skreen.attributes('-fullscreen', True)
-    skreen.title("Countdown")
-    time1 = Label(skreen)
-    time1.pack()
-    update_screen(skreen, time1, t)
-def update_screen(skreen, time1, t):
-    if t > 0:
-        skreen.after(1000, update_screen, skreen, time1, t-1)
-    else:
-        skreen
-        screen2 = Toplevel()
-        screen2.attributes('-fullscreen', True)
-        screen2.title("Buttons, and more buttons!")
-        Label(screen2,text="Great job!")
 #written by me
 def Test():
     global l
@@ -565,7 +574,7 @@ def Test():
             Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
         if l> 1:
             Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
-        Button(screen,text="Confirm", command=countdown).pack()
+        Button(screen,text="Confirm", command=Buttons3).pack()
         Label(screen,text="Remember, this is measured in minutes!").pack()
         screen.mainloop()
     testscreen()
