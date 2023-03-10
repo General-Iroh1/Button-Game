@@ -10,6 +10,7 @@ x = 0
 s = 0
 c = 0
 l = 1
+v = 0
 y = 1
 score = 0
 e = random.randint(0,760)
@@ -117,8 +118,6 @@ l = 1
 y = 1
 m = 1
 score = 0
-e = random.randint(0,760)
-f = random.randint(1,1520)
 print (e)
 print (f)
 fe =str(f)
@@ -173,54 +172,94 @@ def Retry3():
 
 
 
+
+
 def Buttons3():
     global q
     global b
     global h
+    global t
+    global e
+    global f
+    global btn
+    global btn2
     global screen
+    global time1
+    global l
+    global score
+    global x
+    global s
+    global v
+    global c
+    global n
+    global y
+    e = random.randint(0,760)
+    f = random.randint(1,1520)
+    if v == 0:
+        t = l * 60
+
     screen = tkinter.Tk()
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(text = "Lets  play a game!").pack()
-    Label(text = "").pack()
-    global btn
-    btn = Button(screen, text = 'Click me !', command = Score3)
-    global e
-    global f
+
+    Label(text="Let's play a game!").pack()
+    Label(text="").pack()
+
+    btn = Button(screen, text='Click me!', command=Score3)
     btn.place(x=f, y=e)
-    global time1
-    global t
-    t = l*60
-    time1 = Label(text = t)
-    time1.pack()
-    global btn2
-    btn2 =Button(screen,text="Click me ;)",command=GameOver3)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
+
+    time1 = Label(screen, text=t, font=("Arial", 24), fg="red")
+    time1.place(relx=0.5, rely=0.5, anchor='center')
+
+    btn2 = Button(screen, text="Click me ;)", command=GameOver3)
+    j = random.randint(0, 760)
+    k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
-    b+=1 
+
+    b += 1
     q = 0
-    countdown()
+    if v ==0:
+        countdown()
     screen.mainloop()
+
 def countdown():
-    global l
-    t = l*60
+    global t
+    update_screen()
 
-    update_screen(screen, time1, t)
-def update_screen(screen, time1, t):
-        if t > 0:
-            screen.after(1000, update_screen, screen, time1, t-1)
-        else:
-            GameOver3()
+def update_screen():
+    global v
+    v+=1
+    global t
+    global time1
+    global screen
+    global t
+    if t > 0:
+        time1.config(text=t)
+        screen.after(1000, update_screen)
+        t -= 1
+    else:
+        GameOver3()
+
+
+
+
+
 def countdown1():
-    global l
-
-    update_screen1(screen3, time2, t1)
-def update_screen1(screen3, time2, t1):
-        if l > 0:
-            screen3.after(1000, update_screen1, screen3, time2, t1-1)
-        else:
-            GameOver3()
+    global t
+    update_screen1()
+def update_screen1():
+    global v
+    v+=1
+    global t
+    global time1
+    global screen
+    global t
+    if t > 0:
+        time1.config(text=t)
+        screen.after(1000, update_screen)
+        t -= 1
+    else:
+        GameOver3()
 def Score3():
     global m
     global b
@@ -228,48 +267,54 @@ def Score3():
     global s
     global c
     global score
+    global x
+    global n
+    global btn
+    global btn2
+
     if c == 1:
-        global score
         score = 0
+
     if s >= 1:
-        global x
-        x +=1
+        x += 1
+
     if c != 1:
         x = 0
-    global l
+
     if x == 1 and l == 1:
         score = 0
-    global n
-    n+=1
+
+    n += 1
+
     if n == 1:
         score = 0
-        score  = score + 1
+        score += 1
         print(score)
     else:
         if l == 2:
-            score= score+1
-            print (score)
-            global e
-            global f
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
+            score += 1
+            print(score)
+            e = random.randint(0, 760)
+            f = random.randint(1, 1520)
             btn.place(x=f, y=e)
         if l == 1:
-            score= score+1
-            print (score)
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
+            score += 1
+            print(score)
+            e = random.randint(0, 760)
+            f = random.randint(1, 1520)
             btn.place(x=f, y=e)
         if y == 1:
-            j = random.randint(0,760)
-            k = random.randint(1,1520)
+            j = random.randint(0, 760)
+            k = random.randint(1, 1520)
             btn2.place(x=k, y=j)
         if y == 2:
-            j = random.randint(0,760)
-            k = random.randint(1,1520)
+            j = random.randint(0, 760)
+            k = random.randint(1, 1520)
             btn2.place(x=k, y=j)
-    c = 0
     Buttons3()
+
+
+
 
 #Button Madness
 
@@ -558,7 +603,7 @@ def Test():
     screenPLACEHOLDER.attributes('-fullscreen', True)
     screenPLACEHOLDER.title("Buttons, and more buttons!")
     downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
-    uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
+    uparrow = PhotoImage(file=r"D:/OneDrive/Pictures/Saved Pictures/button_up.png")
     screenPLACEHOLDER.withdraw()
     def testscreen():
         global screen
