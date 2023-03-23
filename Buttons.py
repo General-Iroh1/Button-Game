@@ -123,6 +123,7 @@ print (f)
 fe =str(f)
 ef =str(e)
 def GameOver3():
+    
     global l
     l = 1
     if s>= 1:
@@ -245,19 +246,15 @@ def update_screen():
 
 
 def countdown1():
-    global t
     update_screen1()
 def update_screen1():
-    global v
-    v+=1
-    global t
+    global t1
     global time1
-    global screen
-    global t
-    if t > 0:
+    global screen3
+    if t1 > 0:
         time1.config(text=t)
-        screen.after(1000, update_screen)
-        t -= 1
+        screen3.after(1000, update_screen)
+        t1 -= 1
     else:
         GameOver3()
 def Score3():
