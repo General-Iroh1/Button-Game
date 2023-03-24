@@ -3,7 +3,7 @@ from tkinter import *
 import random
 import time
 from tkinter import messagebox
-#The screen is lava!
+#The screen is lava!w
 b=0
 n = 0
 x = 0
@@ -140,8 +140,6 @@ def GameOver3():
 def Retry3():
     global y
     y+=1
-    global l
-    l+=1
     global c
     c+=1
     global x
@@ -233,7 +231,6 @@ def update_screen():
     global t
     global time1
     global screen
-    global t
     if t > 0:
         time1.config(text=t)
         screen.after(1000, update_screen)
@@ -252,8 +249,8 @@ def update_screen1():
     global time1
     global screen3
     if t1 > 0:
-        time1.config(text=t)
-        screen3.after(1000, update_screen)
+        time1.config(text=t1)
+        screen3.after(1000, update_screen1)
         t1 -= 1
     else:
         GameOver3()
