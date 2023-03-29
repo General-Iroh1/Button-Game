@@ -3,7 +3,7 @@ from tkinter import *
 import random
 import time
 from tkinter import messagebox
-#The screen is lava!w
+#The screen is lava!
 b=0
 n = 0
 x = 0
@@ -108,13 +108,18 @@ def Score4():
 #Timed
 
 b = 1
+i = 0
+k = 0
 n = 0
+a = 0
 x = 0
 h = 1
 s = 0
 z = 0
 q = 0
 c = 0
+g = random.randint(0,760)
+d =  random.randint(1,1520)
 l = 1
 y = 1
 m = 1
@@ -124,6 +129,14 @@ print (f)
 fe =str(f)
 ef =str(e)
 def GameOver3():
+    global i
+    global k
+    global screen6
+    global screen3
+    if k >= 1:
+        screen3.destroy()
+    if i >= 1:
+        screen6.destroy()
     global l
     l = 1
     if s>= 1:
@@ -138,7 +151,10 @@ def GameOver3():
     Button(screen2,text="Retry", command=Retry3).pack()
     Button(screen2,text="Quit", command=quit).pack()
 def Retry3():
+    global i
+    global a
     global y
+    i = 0
     y+=1
     global c
     c+=1
@@ -149,8 +165,10 @@ def Retry3():
     global s
     s+=1
     global screen3
-    screen3 = Toplevel(screen0)
+    if a >= 1:
+        screen3.destroy()
     screen2.destroy()
+    screen3 = Toplevel(screen0)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
     Label(screen3,text = "Lets  play a game!").pack()
@@ -161,9 +179,9 @@ def Retry3():
     time2.pack()
     global btn1
     btn1 = Button(screen3, text = 'Click me !', command = Score3)
-    global e
-    global f
-    btn1.place(x=f, y=e)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn1.place(x=k, y=j)
     global btn3
     btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
     j = random.randint(0,760)
@@ -176,6 +194,7 @@ def Retry3():
 
 
 def Buttons3():
+    global i
     global q
     global b
     global h
@@ -196,6 +215,7 @@ def Buttons3():
     global c
     global n
     global y
+    i+=1
     e = random.randint(0,760)
     f = random.randint(1,1520)
     if v == 0:
@@ -252,10 +272,12 @@ def countdown1():
     update_screen1()
 def update_screen1():
     global t1
-    global time1
+    global a
+    global time2
     global screen3
+    a+=1
     if t1 > 0:
-        time1.config(text=t1)
+        time2.config(text=t1)
         screen3.after(1000, countdown1)
         t1 -= 1
     else:
@@ -591,8 +613,6 @@ def down():
         global l
         l-=1
         screen.after(1, testscreen)
-#writen by chat GPT, working on how to fix some errors.
-#written by me
 def Test():
     global l
     l=1
