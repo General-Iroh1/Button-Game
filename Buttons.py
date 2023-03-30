@@ -113,9 +113,11 @@ k = 0
 n = 0
 a = 0
 x = 0
+p = 0
 h = 1
 s = 0
 z = 0
+o = 0
 q = 0
 c = 0
 g = random.randint(0,760)
@@ -128,15 +130,19 @@ print (e)
 print (f)
 fe =str(f)
 ef =str(e)
+def BGameover3():
+    global screen6
+    if i >= 1:
+        screen6.destroy()
+    GameOver3()
+def RGameover3():
+    global screen3
+    if o >= 1:
+        screen3.destroy()
+    GameOver3()
 def GameOver3():
     global i
     global k
-    global screen6
-    global screen3
-    if k >= 1:
-        screen3.destroy()
-    if i >= 1:
-        screen6.destroy()
     global l
     l = 1
     if s>= 1:
@@ -154,6 +160,11 @@ def Retry3():
     global i
     global a
     global y
+    global o
+    global p
+    p = 2
+    y=2
+    o+=1
     i = 0
     y+=1
     global c
@@ -183,7 +194,7 @@ def Retry3():
     k = random.randint(1,1520)
     btn1.place(x=k, y=j)
     global btn3
-    btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
+    btn3 =Button(screen3,text="Click me ;)",command=RGameover3)
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
@@ -211,11 +222,14 @@ def Buttons3():
     global x
     global s
     global v
+    global p
     global z
     global c
     global n
     global y
+    y=1
     i+=1
+    p=1
     e = random.randint(0,760)
     f = random.randint(1,1520)
     if v == 0:
@@ -236,7 +250,7 @@ def Buttons3():
     time1 = Label(screen6, text=t, font=("Arial", 24), fg="red")
     time1.place(relx=0.5, rely=0.5, anchor='center')
 
-    btn2 = Button(screen6, text="Click me ;)", command=GameOver3)
+    btn2 = Button(screen6, text="Click me ;)", command=BGameover3)
     j = random.randint(0, 760)
     k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
@@ -293,6 +307,7 @@ def Score3():
     global n
     global btn
     global btn2
+    global p
 
     if c == 1:
         score = 0
@@ -301,7 +316,7 @@ def Score3():
     if c != 1:
         x = 0
 
-    if x == 1 and l == 1:
+    if x == 1 and p == 1:
         score = 0
 
     n += 1
@@ -311,13 +326,13 @@ def Score3():
         score += 1
         print(score)
     else:
-        if l == 2:
+        if p == 2:
             score += 1
             print(score)
             e = random.randint(0, 760)
             f = random.randint(1, 1520)
-            btn.place(x=f, y=e)
-        if l == 1:
+            btn1.place(x=f, y=e)
+        if p == 1:
             score += 1
             print(score)
             e = random.randint(0, 760)
@@ -330,7 +345,7 @@ def Score3():
         if y == 2:
             j = random.randint(0, 760)
             k = random.randint(1, 1520)
-            btn2.place(x=k, y=j)
+            btn3.place(x=k, y=j)
     Buttons3()
 
 
