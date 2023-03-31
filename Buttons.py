@@ -162,7 +162,7 @@ def Retry3():
     y=2
     o+=1
     i = 0
-    global c
+    global c 
     c+=1
     global r
     if r >= 1:
