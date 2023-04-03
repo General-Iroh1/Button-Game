@@ -116,6 +116,8 @@ r = 0
 x = 0
 p = 0
 h = 1
+u = 0
+w = 1
 s = 0
 z = 0
 o = 0
@@ -137,6 +139,8 @@ def GameOver3():
     global l
     global r
     global o
+    global u
+    u+=1
     if o >= 1:
         r+=1
     l = 1
@@ -156,41 +160,52 @@ def Retry3():
     global a
     global y
     global o
+    global u
     global p
     global score
-    p = 2
-    y=2
-    o+=1
-    i = 0
-    global c 
-    c+=1
-    global r
-    if r >= 1:
-        score = 0
-    global s
-    s+=1
-    global screen3
-    if a >= 1:
-        screen3.destroy()
-    screen2.destroy()
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    global t1
-    global time2
-    t1 = l*60
-    time2 = Label(text = t1)
-    time2.pack()
-    global btn1
-    btn1 = Button(screen3, text = 'Click me !', command = Score3)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn1.place(x=k, y=j)
-    global btn3
-    btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn3.place(x=k, y=j)
+    global screen6
+    global w
+    if w == 1:
+        screen6.update()
+        screen6.destroy()
+    else:
+        p = 2
+        y=2
+        o+=1
+        i = 0
+        global c 
+        c+=1
+        global r
+        if u >= 1:
+            if r >= 1:
+                score = 0
+        u = 0
+        global s
+        s+=1
+        global screen3
+        if a >= 1:
+            screen3.destroy()
+        screen2.destroy()
+        screen3 = Toplevel(screen0)
+        screen3.attributes('-fullscreen', True)
+        screen3.title("Buttons, and more buttons!")
+        global t1
+        global time2
+        t1 = l*60
+        time2 = Label(text = t1)
+        time2.pack()
+        global btn1
+        btn1 = Button(screen3, text = 'Click me !', command = Score3)
+        j = random.randint(0,760)
+        k = random.randint(1,1520)
+        btn1.place(x=k, y=j)
+        global btn3
+        btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
+        j = random.randint(0,760)
+        k = random.randint(1,1520)
+        btn3.place(x=k, y=j)
+        w += 1
+    screen0.mainloop()
     countdown1()
 
 
@@ -252,7 +267,7 @@ def Buttons3():
     q = 0
     if v ==0:
         countdown()
-    screen.mainloop()
+    screen0.mainloop()
 
 def countdown():
     global t
@@ -297,6 +312,7 @@ def Score3():
     global c
     global score
     global x
+    global u
     global n
     global btn
     global btn2
@@ -338,6 +354,7 @@ def Score3():
             k = random.randint(1, 1520)
             btn3.place(x=k, y=j)
             Retry3()
+    u = 0
 
 
 

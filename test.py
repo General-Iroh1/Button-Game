@@ -26,7 +26,7 @@ def GameOver4():
         screen3.destroy()
     sscore = str(score)
     global screen2
-    screen2=Toplevel(screen)
+    screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
@@ -44,7 +44,7 @@ def Retry4():
     global s
     s+=1
     global screen3
-    screen3 = Toplevel(screen)
+    screen3 = Toplevel(screen0)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
     Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
@@ -108,12 +108,22 @@ def Score4():
 #Timed
 
 b = 1
+i = 0
+k = 0
 n = 0
+a = 0
+r = 0
 x = 0
+p = 0
 h = 1
+u = 0
 s = 0
+z = 0
+o = 0
 q = 0
 c = 0
+g = random.randint(0,760)
+d =  random.randint(1,1520)
 l = 1
 y = 1
 m = 1
@@ -123,14 +133,21 @@ print (f)
 fe =str(f)
 ef =str(e)
 def GameOver3():
-    
+    global i
+    global k
     global l
+    global r
+    global o
+    global u
+    u+=1
+    if o >= 1:
+        r+=1
     l = 1
     if s>= 1:
         screen3.destroy()
     sscore = str(score)
     global screen2
-    screen2=Toplevel(screen)
+    screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
@@ -138,22 +155,33 @@ def GameOver3():
     Button(screen2,text="Retry", command=Retry3).pack()
     Button(screen2,text="Quit", command=quit).pack()
 def Retry3():
+    global i
+    global a
     global y
-    y+=1
-    global l
-    l+=1
-    global c
+    global o
+    global u
+    global p
+    global score
+    p = 2
+    y=2
+    o+=1
+    i = 0
+    global c 
     c+=1
-    global x
-    if x >= 1:
-        score == 0
+    global r
+    if u >= 1:
+        if r >= 1:
+            score = 0
+    u = 0
     global s
     s+=1
     global screen3
-    screen3 = Toplevel(screen)
+    if a >= 1:
+        screen3.destroy()
+    screen2.destroy()
+    screen3 = Toplevel(screen0)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
-    Label(screen3,text = "Lets  play a game!").pack()
     global t1
     global time2
     t1 = l*60
@@ -161,9 +189,9 @@ def Retry3():
     time2.pack()
     global btn1
     btn1 = Button(screen3, text = 'Click me !', command = Score3)
-    global e
-    global f
-    btn1.place(x=f, y=e)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn1.place(x=k, y=j)
     global btn3
     btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
     j = random.randint(0,760)
@@ -176,6 +204,7 @@ def Retry3():
 
 
 def Buttons3():
+    global i
     global q
     global b
     global h
@@ -184,6 +213,7 @@ def Buttons3():
     global f
     global btn
     global btn2
+    global screen6
     global screen
     global time1
     global l
@@ -191,32 +221,39 @@ def Buttons3():
     global x
     global s
     global v
+    global p
+    global z
     global c
     global n
     global y
+    y=1
+    i+=1
+    p=1
     e = random.randint(0,760)
     f = random.randint(1,1520)
     if v == 0:
         t = l * 60
-
-    screen = tkinter.Tk()
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
+    screen6 = tkinter.Tk()
+    if z >= 1:
+        screen6.destroy()
+    screen.destroy()
+    screen6.attributes('-fullscreen', True)
+    screen6.title("Buttons, and more buttons!")
 
     Label(text="Let's play a game!").pack()
     Label(text="").pack()
 
-    btn = Button(screen, text='Click me!', command=Score3)
+    btn = Button(screen6, text='Click me!', command=Score3)
     btn.place(x=f, y=e)
 
-    time1 = Label(screen, text=t, font=("Arial", 24), fg="red")
+    time1 = Label(screen6, text=t, font=("Arial", 24), fg="red")
     time1.place(relx=0.5, rely=0.5, anchor='center')
 
-    btn2 = Button(screen, text="Click me ;)", command=GameOver3)
+    btn2 = Button(screen6, text="Click me ;)", command=GameOver3)
     j = random.randint(0, 760)
     k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
-
+    z+=1
     b += 1
     q = 0
     if v ==0:
@@ -232,11 +269,10 @@ def update_screen():
     v+=1
     global t
     global time1
-    global screen
-    global t
+    global screen6
     if t > 0:
         time1.config(text=t)
-        screen.after(1000, update_screen)
+        screen6.after(1000, update_screen)
         t -= 1
     else:
         GameOver3()
@@ -249,11 +285,13 @@ def countdown1():
     update_screen1()
 def update_screen1():
     global t1
-    global time1
+    global a
+    global time2
     global screen3
+    a+=1
     if t1 > 0:
-        time1.config(text=t)
-        screen3.after(1000, update_screen)
+        time2.config(text=t1)
+        screen3.after(1000, countdown1)
         t1 -= 1
     else:
         GameOver3()
@@ -265,21 +303,18 @@ def Score3():
     global c
     global score
     global x
+    global u
     global n
     global btn
     global btn2
+    global p
 
     if c == 1:
         score = 0
 
-    if s >= 1:
-        x += 1
 
     if c != 1:
-        x = 0
-
-    if x == 1 and l == 1:
-        score = 0
+        r = 0
 
     n += 1
 
@@ -288,13 +323,13 @@ def Score3():
         score += 1
         print(score)
     else:
-        if l == 2:
+        if p == 2:
             score += 1
             print(score)
             e = random.randint(0, 760)
             f = random.randint(1, 1520)
-            btn.place(x=f, y=e)
-        if l == 1:
+            btn1.place(x=f, y=e)
+        if p == 1:
             score += 1
             print(score)
             e = random.randint(0, 760)
@@ -304,11 +339,13 @@ def Score3():
             j = random.randint(0, 760)
             k = random.randint(1, 1520)
             btn2.place(x=k, y=j)
+            Buttons3()
         if y == 2:
             j = random.randint(0, 760)
             k = random.randint(1, 1520)
-            btn2.place(x=k, y=j)
-    Buttons3()
+            btn3.place(x=k, y=j)
+            Retry3()
+    u = 0
 
 
 
@@ -335,7 +372,7 @@ def GameOver2():
         screen3.destroy()
     sscore = str(score)
     global screen2
-    screen2=Toplevel(screen)
+    screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
@@ -355,7 +392,7 @@ def Retry2():
     global s
     s+=1
     global screen3
-    screen3 = Toplevel(screen)
+    screen3 = Toplevel(screen0)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
     Label(screen3,text = "Lets  play a game!").pack()
@@ -463,7 +500,7 @@ def GameOver1():
         screen3.destroy()
     sscore = str(score)
     global screen2
-    screen2=Toplevel(screen)
+    screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
@@ -483,7 +520,7 @@ def Retry1():
     global s
     s+=1
     global screen3
-    screen3 = Toplevel(screen)
+    screen3 = Toplevel(screen0)
     screen3.attributes('-fullscreen', True)
     screen3.title("Buttons, and more buttons!")
     Label(screen3,text = "Lets  play a game!").pack()
@@ -590,13 +627,11 @@ def down():
         global l
         l-=1
         screen.after(1, testscreen)
-#writen by chat GPT, working on how to fix some errors.
-#written by me
 def Test():
     global l
     l=1
     global testscreen
-    screenPLACEHOLDER = Toplevel()
+    screenPLACEHOLDER = Toplevel(screen0)
     screenPLACEHOLDER.attributes('-fullscreen', True)
     screenPLACEHOLDER.title("Buttons, and more buttons!")
     downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
@@ -604,7 +639,7 @@ def Test():
     screenPLACEHOLDER.withdraw()
     def testscreen():
         global screen
-        screen = Toplevel()
+        screen = Toplevel(screen0)
         screen.attributes('-fullscreen', True)
         screen.title("Buttons, and more buttons!")
         if l ==5:
