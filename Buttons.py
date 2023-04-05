@@ -106,7 +106,7 @@ def Score4():
     c = 0
 
 #Timed
-
+aa = 0
 b = 1
 i = 0
 k = 0
@@ -140,6 +140,10 @@ def GameOver3():
     global r
     global o
     global u
+    global w
+    global aa
+    aa+=1
+    w+=1
     u+=1
     if o >= 1:
         r+=1
@@ -165,47 +169,51 @@ def Retry3():
     global score
     global screen6
     global w
-    if w == 1:
-        screen6.update()
-        screen6.destroy()
-    else:
-        p = 2
-        y=2
-        o+=1
-        i = 0
-        global c 
-        c+=1
-        global r
-        if u >= 1:
-            if r >= 1:
-                score = 0
-        u = 0
-        global s
-        s+=1
-        global screen3
-        if a >= 1:
-            screen3.destroy()
-        screen2.destroy()
-        screen3 = Toplevel(screen0)
-        screen3.attributes('-fullscreen', True)
-        screen3.title("Buttons, and more buttons!")
-        global t1
-        global time2
+    global r
+    global s
+    global t1
+    global time2
+    global screen3
+    global c 
+    global btn1
+    global btn3
+    global aa
+    global t1
+    p = 2
+    y=2
+    o+=1
+    i = 0
+    c+=1
+
+    if u >= 1:
+        if r >= 1:
+            score = 0
+    u = 0
+    s+=1
+
+    if a >= 1:
+        screen3.destroy()
+    screen2.destroy()
+
+    screen3 = Toplevel(screen0)
+    screen3.attributes('-fullscreen', True)
+    screen3.title("Buttons, and more buttons!")
+    if aa >= 1:
         t1 = l*60
-        time2 = Label(text = t1)
-        time2.pack()
-        global btn1
-        btn1 = Button(screen3, text = 'Click me !', command = Score3)
-        j = random.randint(0,760)
-        k = random.randint(1,1520)
-        btn1.place(x=k, y=j)
-        global btn3
-        btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
-        j = random.randint(0,760)
-        k = random.randint(1,1520)
-        btn3.place(x=k, y=j)
-        w += 1
-    screen0.mainloop()
+    time2 = Label(screen3,text = t1, font=("Arial", 24), fg="red")
+    time2.place(relx=0.5, rely=0.5, anchor='center')
+
+    btn1 = Button(screen3, text = 'Click me !', command = Score3)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn1.place(x=k, y=j)
+
+    btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn3.place(x=k, y=j)
+
+    w += 1
     countdown1()
 
 
@@ -240,8 +248,10 @@ def Buttons3():
     p=1
     e = random.randint(0,760)
     f = random.randint(1,1520)
+
     if v == 0:
         t = l * 60
+
     screen6 = tkinter.Tk()
     if z >= 1:
         screen6.destroy()
@@ -267,6 +277,7 @@ def Buttons3():
     q = 0
     if v ==0:
         countdown()
+    
     screen0.mainloop()
 
 def countdown():
@@ -276,9 +287,13 @@ def countdown():
 def update_screen():
     global v
     v+=1
-    global t
+    global t 
     global time1
     global screen6
+    global w
+    if w ==2:
+        screen6.destroy()
+        GameOver3()
     if t > 0:
         time1.config(text=t)
         screen6.after(1000, update_screen)
@@ -291,6 +306,8 @@ def update_screen():
 
 
 def countdown1():
+    global aa
+    aa=0
     update_screen1()
 def update_screen1():
     global t1
@@ -302,7 +319,7 @@ def update_screen1():
         time2.config(text=t1)
         screen3.after(1000, countdown1)
         t1 -= 1
-    else:
+    if t1==0:
         GameOver3()
 def Score3():
     global m
