@@ -33,6 +33,7 @@ def GameOver4():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry4).pack()
     Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry4():
     global l
     l+=1
@@ -159,6 +160,7 @@ def GameOver3():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry3).pack()
     Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry3():
     global i
     global a
@@ -377,7 +379,7 @@ def Score3():
 
 
 #Button Madness
-
+a = 0
 n = 0
 x = 0
 s = 0
@@ -392,6 +394,9 @@ print (f)
 fe =str(f)
 ef =str(e)
 def GameOver2():
+    global a
+    if a >= 1:
+        screen3.destroy()
     global l
     l = 1
     if s>= 1:
@@ -405,7 +410,10 @@ def GameOver2():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry2).pack()
     Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry2():
+    global a
+    a+=1
     global y
     y+=1
     global l
@@ -505,7 +513,6 @@ def Score2():
     c = 0
 
 #Normal
-
 n = 0
 x = 0
 s = 0
@@ -521,6 +528,7 @@ fe =str(f)
 ef =str(e)
 def GameOver1():
     global l
+    global a
     l = 1
     if s>= 1:
         screen3.destroy()
@@ -533,6 +541,7 @@ def GameOver1():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry1).pack()
     Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry1():
     global y
     y+=1
@@ -635,13 +644,9 @@ def Starting_Screen():
     btn = Button(screen0, text = 'Normal', command = Buttons1).pack()
     global e
     global f
-    Label(text = "").pack()
 
     Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
-    Label(text = "").pack()
-
     Button(screen0,text="Timed(W.I.P)",command=Test).pack()
-    Label(text = "").pack()
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
     screen0.mainloop()
