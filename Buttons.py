@@ -11,6 +11,7 @@ s = 0
 c = 0
 l = 1
 v = 0
+FinishedLava=0
 y = 1
 score = 0
 e = random.randint(0,760)
@@ -19,20 +20,25 @@ print (e)
 print (f)
 fe =str(f)
 ef =str(e)
+def quit4():
+    global FinishedLava
+    FinishedLava+=1
+    quit()
 def GameOver4():
     global l
+    global screen2
     l = 1
     if s>= 1:
+        screen2.destroy()
         screen3.destroy()
     sscore = str(score)
-    global screen2
     screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry4).pack()
-    Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Quit", command=quit4).pack()
     Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry4():
     global l
@@ -50,7 +56,7 @@ def Retry4():
     screen3.title("Buttons, and more buttons!")
     Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
     global btn1
-    btn1 = Button(screen3, text = 'Click me !', command = Score4)
+    btn1 = Button(screen3, text = 'Click me !', bg='lime', command = Score4)
     global e
     global f
     btn1.place(x=f, y=e)
@@ -62,7 +68,7 @@ def Buttons4():
     Label(text = "Lets  play a game!").pack()
     Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
     global btn
-    btn = Button(screen, text = 'Click me !', command = Score4)
+    btn = Button(screen, text = 'Click me !', bg = 'lime', command = Score4)
     global e
     global f
     btn.place(x=f, y=e)
@@ -129,11 +135,16 @@ d =  random.randint(1,1520)
 l = 1
 y = 1
 m = 1
+FinishedTimed=0
 score = 0
 print (e)
 print (f)
 fe =str(f)
 ef =str(e)
+def quit3():
+    global FinishedTimed
+    FinishedTimed+=1
+    quit()
 def GameOver3():
     global i
     global k
@@ -159,7 +170,7 @@ def GameOver3():
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry3).pack()
-    Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Quit", command=quit3).pack()
     Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry3():
     global i
@@ -378,7 +389,7 @@ def Score3():
 
 
 
-#Button Madness
+#Button Mayhem
 a = 0
 n = 0
 x = 0
@@ -387,29 +398,36 @@ c = 0
 l = 1
 y = 1
 score = 0
+FinishedMayhem = 0
 e = random.randint(0,760)
 f = random.randint(1,1520)
+
 print (e)
 print (f)
 fe =str(f)
 ef =str(e)
+def quit2():
+    global FinishedMayhem
+    FinishedMayhem+=1
+    quit()
 def GameOver2():
+    global screen2
     global a
     if a >= 1:
+        screen2.destroy()
         screen3.destroy()
     global l
     l = 1
     if s>= 1:
         screen3.destroy()
     sscore = str(score)
-    global screen2
     screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry2).pack()
-    Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Quit", command=quit2).pack()
     Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry2():
     global a
@@ -458,6 +476,8 @@ def Buttons2():
     btn2 =Button(screen,text="Click me ;)",command=GameOver2)
     screen.mainloop()
 def newbutton():
+    global screen
+    global screen3
     if score == 1 or 2 or 3 or 4 or 5 or 10 or 20 or 30 or 40 or 50 or 60 or 70 or 75 or 100:
         global btn2
         btn2 =Button(screen,text="Click me ;)",command=GameOver2)
@@ -522,10 +542,15 @@ y = 1
 score = 0
 e = random.randint(0,760)
 f = random.randint(1,1520)
+FinishedRegular = 0
 print (e)
 print (f)
 fe =str(f)
 ef =str(e)
+def quit1():
+    global FinishedRegular
+    FinishedRegular+=1
+    quit()
 def GameOver1():
     global l
     global a
@@ -540,7 +565,7 @@ def GameOver1():
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Retry", command=Retry1).pack()
-    Button(screen2,text="Quit", command=quit).pack()
+    Button(screen2,text="Quit", command=quit1).pack()
     Button(screen2,text="Main Menu", command=Starting_Screen).pack()
 def Retry1():
     global y
@@ -632,7 +657,12 @@ def Score1():
             k = random.randint(1,1520)
             btn3.place(x=k, y=j)
     c = 0
-
+def ForTheWorthy():
+    global screen7
+    screen7 = tkinter.Tk()
+    screen7.attributes('-fullscreen', True)
+    screen7.title("...")
+    screen7.configure(bg='red')
 def Starting_Screen():
     global screen0
     screen0 = tkinter.Tk()
@@ -646,9 +676,10 @@ def Starting_Screen():
     global f
 
     Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
-    Button(screen0,text="Timed(W.I.P)",command=Test).pack()
+    Button(screen0,text="Timed",command=Test).pack()
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
+    Button(screen0, text="For The Worthy",command=ForTheWorthy)
     screen0.mainloop()
 def up():
         global l
