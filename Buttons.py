@@ -657,12 +657,277 @@ def Score1():
             k = random.randint(1,1520)
             btn3.place(x=k, y=j)
     c = 0
+#For The Worthy
+b = 1
+i = 0
+k = 0
+n = 0
+a = 0
+r = 0
+x = 0
+p = 0
+h = 1
+u = 0
+w = 1
+s = 0
+z = 0
+o = 0
+q = 0
+c = 0
+g = random.randint(0,760)
+d =  random.randint(1,1520)
+l = 1
+y = 1
+m = 1
+FinishedFTW=0
+score = 0
+print (e)
+print (f)
+fe =str(f)
+ef =str(e)
+def quit5():
+    global FinishedFTW
+    FinishedFTW+=1
+    quit()
+def GameOver5():
+    global i
+    global k
+    global l
+    global r
+    global o
+    global u
+    global w
+    global aa
+    aa+=1
+    w+=1
+    u+=1
+    if o >= 1:
+        r+=1
+    if s>= 1:
+        screen3.destroy()
+    sscore = str(score)
+    global screen2
+    screen2=Toplevel(screen0)
+    screen2.attributes('-fullscreen', True)
+    screen2.title("Game Over!")
+    Label(screen2,text="You got a score of "+sscore).pack()
+    Label(screen2,text="Game Over! Better luck next time!").pack()
+    Button(screen2,text="Retry", command=Retry5).pack()
+    Button(screen2,text="Quit", command=quit5).pack()
+    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
+def Retry5():
+    global i
+    global a
+    global y
+    global o
+    global u
+    global p
+    global score
+    global screen6
+    global w
+    global r
+    global s
+    global t1
+    global time2
+    global screen3
+    global c 
+    global btn1
+    global btn3
+    global aa
+    global t1
+    p = 2
+    y=2
+    o+=1
+    i = 0
+    c+=1
+
+    if u >= 1:
+        if r >= 1:
+            score = 0
+    u = 0
+    s+=1
+
+    if a >= 1:
+        screen3.destroy()
+    screen2.destroy()
+
+    screen3 = Toplevel(screen0)
+    screen3.attributes('-fullscreen', True)
+    screen3.title("Buttons, and more buttons!")
+    if aa >= 1:
+        t1 = 30
+    time2 = Label(screen3,text = t1, font=("Arial", 24), fg="red")
+    time2.place(relx=0.5, rely=0.5, anchor='center')
+
+
+    Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver5).pack()
+    btn1 = Button(screen3, text = 'Click me !', command = Score5)
+    j = random.randint(0,760)
+    k = random.randint(1,1520)
+    btn1.place(x=k, y=j)
+
+    w += 1
+    countdown1_5()
+
+
+
+
+
+def Buttons5():
+    global i
+    global q
+    global b
+    global h
+    global t
+    global e
+    global f
+    global btn
+    global btn2
+    global screen6
+    global screen
+    global time1
+    global l
+    global score
+    global x
+    global s
+    global v
+    global p
+    global z
+    global c
+    global n
+    global y
+    y=1
+    i+=1
+    p=1
+    e = random.randint(0,760)
+    f = random.randint(1,1520)
+
+    if v == 0:
+        t = 30
+
+    screen6 = tkinter.Tk()
+    if z >= 1:
+        screen6.destroy()
+    screen6.attributes('-fullscreen', True)
+    screen6.title("Buttons, and more buttons!")
+
+    Label(text="Let's play a game!").pack()
+    Label(text="").pack()
+
+
+    time1 = Label(screen6, text=t, font=("Arial", 24), fg="red")
+    time1.place(relx=0.5, rely=0.5, anchor='center')
+
+    Button(screen6,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver5).pack()
+    btn = Button(screen6, text='Click me!', command=Score5)
+    btn.place(x=f, y=e)
+    j = random.randint(0, 760)
+    k = random.randint(1, 1520)
+    z+=1
+    b += 1
+    q = 0
+    if v ==0:
+        countdown_5()
+    
+    screen0.mainloop()
+
+def countdown_5():
+    global t
+    update_screen_5()
+
+def update_screen_5():
+    global v
+    v+=1
+    global t 
+    global time1
+    global screen6
+    global w
+    if w ==2:
+        screen6.destroy()
+        GameOver5()
+    if t > 0:
+        time1.config(text=t)
+        screen6.after(1000, update_screen_5)
+        t -= 1
+    else:
+        GameOver5()
+
+
+
+
+
+def countdown1_5():
+    global aa
+    aa=0
+    update_screen1_5()
+def update_screen1_5():
+    global t1
+    global a
+    global time2
+    global screen3
+    a+=1
+    if t1 > 0:
+        time2.config(text=t1)
+        screen3.after(1000, countdown1_5)
+        t1 -= 1
+    if t1==0:
+        GameOver5()
+def Score5():
+    global m
+    global b
+    global l
+    global s
+    global c
+    global score
+    global x
+    global u
+    global n
+    global btn
+    global btn2
+    global p
+
+    if c == 1:
+        score = 0
+
+
+    if c != 1:
+        r = 0
+
+    n += 1
+
+    if n == 1:
+        score = 0
+        score += 1
+        print(score)
+    else:
+        if p == 1:
+            score += 1
+            print(score)
+            e = random.randint(0, 760)
+            f = random.randint(1, 1520)
+            btn.place(x=f, y=e)
+            Buttons5()
+        if y >= 2:
+            j = random.randint(0, 760)
+            k = random.randint(1, 1520)
+            btn1.place(x=k, y=j)
+            Retry5()
+
+    u = 0
 def ForTheWorthy():
     global screen7
     screen7 = tkinter.Tk()
     screen7.attributes('-fullscreen', True)
     screen7.title("...")
     screen7.configure(bg='red')
+    Label(screen7,text="Only those who have TRUE experience may get past this gate").pack()
+    Label(screen7,text="",bg='red').pack()
+    Label(screen7,text="",bg='red').pack()
+    Label(screen7,text="",bg='red').pack()
+    Label(screen7,text="",bg='red').pack()
+    Button(screen7,text="Continue",command=Buttons5,bg='red').pack()
+    Label(screen7,text="",bg='red').pack()
+    Button(screen7,text="Quit",command=quit,bg='red').pack()
 def Starting_Screen():
     global screen0
     screen0 = tkinter.Tk()
@@ -679,7 +944,7 @@ def Starting_Screen():
     Button(screen0,text="Timed",command=Test).pack()
 
     Button(screen0,text="The screen is lava!",command=Buttons4).pack()
-    Button(screen0, text="For The Worthy",command=ForTheWorthy)
+    Button(screen0, text="For The Worthy",command=ForTheWorthy).pack()
     screen0.mainloop()
 def up():
         global l
