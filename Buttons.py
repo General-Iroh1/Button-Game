@@ -2,6 +2,7 @@ import tkinter
 from tkinter import *
 import random
 import time
+from playsound import playsound
 from tkinter import messagebox
 #The screen is lava!
 b=0
@@ -169,66 +170,8 @@ def GameOver3():
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
-    Button(screen2,text="Retry", command=Retry3).pack()
     Button(screen2,text="Quit", command=quit3).pack()
     Button(screen2,text="Main Menu", command=Starting_Screen).pack()
-def Retry3():
-    global i
-    global a
-    global y
-    global o
-    global u
-    global p
-    global score
-    global screen6
-    global w
-    global r
-    global s
-    global t1
-    global time2
-    global screen3
-    global c 
-    global btn1
-    global btn3
-    global aa
-    global t1
-    p = 2
-    y=2
-    o+=1
-    i = 0
-    c+=1
-
-    if u >= 1:
-        if r >= 1:
-            score = 0
-    u = 0
-    s+=1
-
-    if a >= 1:
-        screen3.destroy()
-    screen2.destroy()
-
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    if aa >= 1:
-        t1 = l*60
-    time2 = Label(screen3,text = t1, font=("Arial", 24), fg="red")
-    time2.place(relx=0.5, rely=0.5, anchor='center')
-
-    btn1 = Button(screen3, text = 'Click me !', command = Score3)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn1.place(x=k, y=j)
-
-    btn3 =Button(screen3,text="Click me ;)",command=GameOver3)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn3.place(x=k, y=j)
-
-    w += 1
-    countdown1()
-
 
 
 
@@ -318,22 +261,6 @@ def update_screen():
 
 
 
-def countdown1():
-    global aa
-    aa=0
-    update_screen1()
-def update_screen1():
-    global t1
-    global a
-    global time2
-    global screen3
-    a+=1
-    if t1 > 0:
-        time2.config(text=t1)
-        screen3.after(1000, countdown1)
-        t1 -= 1
-    if t1==0:
-        GameOver3()
 def Score3():
     global m
     global b
@@ -362,12 +289,6 @@ def Score3():
         score += 1
         print(score)
     else:
-        if p == 2:
-            score += 1
-            print(score)
-            e = random.randint(0, 760)
-            f = random.randint(1, 1520)
-            btn1.place(x=f, y=e)
         if p == 1:
             score += 1
             print(score)
@@ -379,11 +300,6 @@ def Score3():
             k = random.randint(1, 1520)
             btn2.place(x=k, y=j)
             Buttons3()
-        if y == 2:
-            j = random.randint(0, 760)
-            k = random.randint(1, 1520)
-            btn3.place(x=k, y=j)
-            Retry3()
     u = 0
 
 
@@ -821,8 +737,6 @@ def Buttons5():
     Button(screen6,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver5).pack()
     btn = Button(screen6, text='Click me!', command=Score5)
     btn.place(x=f, y=e)
-    j = random.randint(0, 760)
-    k = random.randint(1, 1520)
     z+=1
     b += 1
     q = 0
@@ -834,6 +748,7 @@ def Buttons5():
 def countdown_5():
     global t
     update_screen_5()
+    playsound('TheWorthyMusic.mp3')
 
 def update_screen_5():
     global v
@@ -844,7 +759,6 @@ def update_screen_5():
     global w
     if w ==2:
         screen6.destroy()
-        GameOver5()
     if t > 0:
         time1.config(text=t)
         screen6.after(1000, update_screen_5)
@@ -936,15 +850,17 @@ def Starting_Screen():
     Label(screen0,text = "What gamemode would you like to play?").pack()
     Label(screen0,text = "").pack()
     global btn
-    btn = Button(screen0, text = 'Normal', command = Buttons1).pack()
+    btn = Button(screen0, text = 'Normal',bg = 'green', command = Buttons1).pack()
     global e
     global f
 
-    Button(screen0,text="Button Mayhem!",command=Buttons2).pack()
-    Button(screen0,text="Timed",command=Test).pack()
+    Button(screen0,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
+    Button(screen0,text="Timed",bg = 'orange',command=Test).pack()
 
-    Button(screen0,text="The screen is lava!",command=Buttons4).pack()
-    Button(screen0, text="For The Worthy",command=ForTheWorthy).pack()
+    Button(screen0,text="The screen is lava!",bg='red',command=Buttons4).pack()
+    Button(screen0, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
+    screen0.mainloop()
+
     screen0.mainloop()
 def up():
         global l
@@ -954,33 +870,42 @@ def down():
         global l
         l-=1
         screen.after(1, testscreen)
+mainmenuclicked=0
+
 def Test():
+    global mainmenuclicked
     global l
-    l=1
     global testscreen
-    screenPLACEHOLDER = Toplevel(screen0)
-    screenPLACEHOLDER.attributes('-fullscreen', True)
-    screenPLACEHOLDER.title("Buttons, and more buttons!")
-    downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
-    uparrow = PhotoImage(file=r"D:/OneDrive/Pictures/Saved Pictures/button_up.png")
-    screenPLACEHOLDER.withdraw()
-    def testscreen():
-        global screen
-        screen = Toplevel(screen0)
-        screen.attributes('-fullscreen', True)
-        screen.title("Buttons, and more buttons!")
-        if l ==5:
-            Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
-        if l < 5:
-            Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
-        Label(screen,text=l,font=('Calibri', 26)).pack()
-        if l == 1:
-            Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
-        if l> 1:
-            Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
-        Button(screen,text="Confirm", command=Buttons3).pack()
-        Label(screen,text="Remember, this is measured in minutes!").pack()
-        screen.mainloop()
+    l=1
+    mainmenuclicked += 1
     testscreen()
+
+def testscreen():
+    global screen
+    screen = Toplevel(screen0)
+    screen.attributes('-fullscreen', True)
+    screen.title("Buttons, and more buttons!")
+    global downarrow, uparrow, downarrow1, uparrow1
+    if l == 5:
+        Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
+    if l < 5 and mainmenuclicked >= 2:
+        uparrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up_copy.png")
+        Button(screen,image=uparrow1,command=up,width=300,height=200, pady=10).pack()
+    if l < 5 and mainmenuclicked == 1:
+        uparrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up.png")
+        Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
+    Label(screen,text=l,font=('Calibri', 26)).pack()
+    if l == 1:
+        Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
+    if l > 1 and mainmenuclicked >= 2:
+        downarrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down_copy.png")
+        Button(screen, image=downarrow1,command=down,width=300,height=200, pady=10).pack()
+    if l > 1 and mainmenuclicked == 1:
+        downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
+        Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
+    Button(screen,text="Confirm", command=Buttons3).pack()
+    Label(screen,text="Remember, this is measured in minutes!").pack()
+
+
 global all
 Starting_Screen()
