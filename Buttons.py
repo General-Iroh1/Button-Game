@@ -63,10 +63,10 @@ def Retry4():
     btn1.place(x=f, y=e)
 def Buttons4():
     global screen
-    screen = tkinter.Tk()
+    screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(text = "Lets  play a game!").pack()
+    Label(screen,text = "Lets  play a game!").pack()
     Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
     global btn
     btn = Button(screen, text = 'Click me !', bg = 'lime', command = Score4)
@@ -208,7 +208,7 @@ def Buttons3():
     if v == 0:
         t = l * 60
 
-    screen6 = tkinter.Tk()
+    screen6 = Toplevel(screen0)
     if z >= 1:
         screen6.destroy()
     screen.destroy()
@@ -377,10 +377,10 @@ def Retry2():
     btn3.place(x=k, y=j)
 def Buttons2():
     global screen
-    screen = tkinter.Tk()
+    screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(text = "Lets  play a game!").pack()
+    Label(screen,text = "Lets  play a game!").pack()
     Label(text = "").pack()
     global btn
     btn = Button(screen, text = 'Click me !', command = Score2)
@@ -513,10 +513,10 @@ def Retry1():
     btn3.place(x=k, y=j)
 def Buttons1():
     global screen
-    screen = tkinter.Tk()
+    screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Label(text = "Lets  play a game!").pack()
+    Label(screen,text = "Lets  play a game!").pack()
     Label(text = "").pack()
     global btn
     btn = Button(screen, text = 'Click me !', command = Score1)
@@ -721,7 +721,7 @@ def Buttons5():
     if v == 0:
         t = 30
 
-    screen6 = tkinter.Tk()
+    screen6 = Toplevel(screen0)
     if z >= 1:
         screen6.destroy()
     screen6.attributes('-fullscreen', True)
@@ -830,7 +830,7 @@ def Score5():
     u = 0
 def ForTheWorthy():
     global screen7
-    screen7 = tkinter.Tk()
+    screen7 = Toplevel(screen0)
     screen7.attributes('-fullscreen', True)
     screen7.title("...")
     screen7.configure(bg='red')
@@ -865,46 +865,46 @@ def Starting_Screen():
 def up():
         global l
         l +=1
-        screen.after(1, testscreen)
+        screen.after(1, Test)
 def down():
         global l
         l-=1
-        screen.after(1, testscreen)
-mainmenuclicked=0
+        screen.after(1, Test)
+mainmenuclicked=1
 
 def Test():
     global mainmenuclicked
     global l
     global testscreen
-    l=1
+    if mainmenuclicked == 1:
+        l=1
     mainmenuclicked += 1
     testscreen()
-
-def testscreen():
-    global screen
-    screen = Toplevel(screen0)
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
-    global downarrow, uparrow, downarrow1, uparrow1
-    if l == 5:
-        Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
-    if l < 5 and mainmenuclicked >= 2:
-        uparrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up_copy.png")
-        Button(screen,image=uparrow1,command=up,width=300,height=200, pady=10).pack()
-    if l < 5 and mainmenuclicked == 1:
-        uparrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up.png")
-        Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
-    Label(screen,text=l,font=('Calibri', 26)).pack()
-    if l == 1:
-        Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
-    if l > 1 and mainmenuclicked >= 2:
-        downarrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down_copy.png")
+def images():
+    global uparrow1
+    global downarrow1
+    uparrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up_copy.png")
+    downarrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down_copy.png")
+def useimages():
+    global uparrow1
+    global downarrow1
+    if l > 1:
         Button(screen, image=downarrow1,command=down,width=300,height=200, pady=10).pack()
-    if l > 1 and mainmenuclicked == 1:
-        downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
-        Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
+    Label(screen,text=l,font=('Calibri', 26)).pack()
+    if l < 5:
+        Button(screen,image=uparrow1,command=up,width=300,height=200, pady=10).pack()
     Button(screen,text="Confirm", command=Buttons3).pack()
     Label(screen,text="Remember, this is measured in minutes!").pack()
+
+
+def testscreen():
+    global screen,mainmenuclicked
+    if mainmenuclicked >= 3:
+        screen.destroy()
+    screen = Toplevel(screen0)
+    screen.attributes('-fullscreen', True)
+    images()
+    useimages()
 
 
 global all
