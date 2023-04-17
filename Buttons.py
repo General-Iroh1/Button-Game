@@ -119,14 +119,17 @@ b = 1
 i = 0
 k = 0
 n = 0
+Button3Done = 0
 a = 0
 r = 0
 x = 0
 p = 0
 h = 1
+TimedStarted=0
 u = 0
 w = 1
 s = 0
+TimedFinished = 0
 z = 0
 o = 0
 q = 0
@@ -155,6 +158,8 @@ def GameOver3():
     global u
     global w
     global aa
+    global Button3Done
+    screen6.destroy()
     aa+=1
     w+=1
     u+=1
@@ -177,11 +182,14 @@ def GameOver3():
 
 
 def Buttons3():
+    global TimedStarted
+    global TimedFinished
     global i
     global q
     global b
     global h
     global t
+    global Button3Done
     global e
     global f
     global btn
@@ -199,6 +207,7 @@ def Buttons3():
     global c
     global n
     global y
+    TimedStarted+=1
     y=1
     i+=1
     p=1
@@ -209,9 +218,8 @@ def Buttons3():
         t = l * 60
 
     screen6 = Toplevel(screen0)
-    if z >= 1:
+    if z >= 1 and TimedFinished == 0:
         screen6.destroy()
-    screen.destroy()
     screen6.attributes('-fullscreen', True)
     screen6.title("Buttons, and more buttons!")
 
@@ -228,6 +236,8 @@ def Buttons3():
     j = random.randint(0, 760)
     k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
+    Button3Done  = 1
+    TimedFinished = 0
     z+=1
     b += 1
     q = 0
@@ -247,9 +257,6 @@ def update_screen():
     global time1
     global screen6
     global w
-    if w ==2:
-        screen6.destroy()
-        GameOver3()
     if t > 0:
         time1.config(text=t)
         screen6.after(1000, update_screen)
@@ -865,34 +872,46 @@ def Starting_Screen():
 def up():
         global l
         l +=1
-        screen.after(1, Test)
+        screen.destroy()
+        if mainmenuclicked >= 3:
+            screen.after(0, Test)
+        else:
+            screen.after(1, testscreen)
 def down():
         global l
         l-=1
-        screen.after(1, Test)
+        if TimedStarted == 2:
+            print("")
+        else:
+            screen.destroy()
+        if mainmenuclicked >= 3:
+            screen.after(1, Test)
+        else:
+            screen.after(1, testscreen)
 mainmenuclicked=1
 
 def Test():
     global mainmenuclicked
+    global v
     global l
-    global testscreen
-    if mainmenuclicked == 1:
-        l=1
+    global TimedStarted
+    global TimedFinished
+    global score
+    score = 0
+    TimedFinished +=1
+    v = 0
     mainmenuclicked += 1
+    if mainmenuclicked >= 3:
+        screen6.destroy()
+    if mainmenuclicked == 1:
+            l=1
     testscreen()
-def images():
-    global uparrow1
-    global downarrow1
-    uparrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_up_copy.png")
-    downarrow1 = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down_copy.png")
 def useimages():
-    global uparrow1
-    global downarrow1
     if l > 1:
-        Button(screen, image=downarrow1,command=down,width=300,height=200, pady=10).pack()
+        Button(screen, text = l-1,command=down).pack()
     Label(screen,text=l,font=('Calibri', 26)).pack()
     if l < 5:
-        Button(screen,image=uparrow1,command=up,width=300,height=200, pady=10).pack()
+        Button(screen, text= l+1,command=up).pack()
     Button(screen,text="Confirm", command=Buttons3).pack()
     Label(screen,text="Remember, this is measured in minutes!").pack()
 
@@ -903,7 +922,6 @@ def testscreen():
         screen.destroy()
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
-    images()
     useimages()
 
 
