@@ -207,7 +207,10 @@ def Buttons3():
     global c
     global n
     global y
+    global iteration
+    iteration = 1
     TimedStarted+=1
+    screen.destroy()
     y=1
     i+=1
     p=1
@@ -872,24 +875,20 @@ def Starting_Screen():
 def up():
         global l
         l +=1
-        screen.destroy()
         if mainmenuclicked >= 3:
             screen.after(0, Test)
         else:
-            screen.after(1, testscreen)
+            screen.after(0, testscreen)
 def down():
         global l
         l-=1
-        if TimedStarted == 2:
-            print("")
-        else:
-            screen.destroy()
         if mainmenuclicked >= 3:
-            screen.after(1, Test)
+            screen.after(0, Test)
         else:
-            screen.after(1, testscreen)
+            screen.after(0, testscreen)
 mainmenuclicked=1
-
+iteration = 1
+screenexists = 0
 def Test():
     global mainmenuclicked
     global v
@@ -897,6 +896,18 @@ def Test():
     global TimedStarted
     global TimedFinished
     global score
+    global screenexists
+    if screenexists >= 1:
+        global downbutton
+        global minutelabel
+        global upbutton
+        global Confirm
+        global Reminder
+        downbutton.destroy()
+        minutelabel.destroy()
+        upbutton.destroy()
+        Confirm.destroy()
+        Reminder.destroy()
     score = 0
     TimedFinished +=1
     v = 0
@@ -908,20 +919,48 @@ def Test():
     testscreen()
 def useimages():
     if l > 1:
-        Button(screen, text = l-1,command=down).pack()
-    Label(screen,text=l,font=('Calibri', 26)).pack()
+        global downbutton
+        downbutton = Button(screen, text = l-1,command=down)
+        downbutton.pack()
+    global minutelabel
+    minutelabel = Label(screen,text=l,font=('Calibri', 26))
+    minutelabel.pack()
     if l < 5:
-        Button(screen, text= l+1,command=up).pack()
-    Button(screen,text="Confirm", command=Buttons3).pack()
-    Label(screen,text="Remember, this is measured in minutes!").pack()
+        global upbutton
+        upbutton = Button(screen, text= l+1,command=up)
+        upbutton.pack()
+    global Confirm
+    Confirm = Button(screen,text="Confirm", command=Buttons3)
+    Confirm.pack()
+    global Reminder
+    Reminder = Label(screen,text="Remember, this is measured in minutes!")
+    Reminder.pack()
+    global screenexists
+    screenexists +=1
 
 
 def testscreen():
+    global iteration
+    global screenexists
     global screen,mainmenuclicked
-    if mainmenuclicked >= 3:
-        screen.destroy()
-    screen = Toplevel(screen0)
-    screen.attributes('-fullscreen', True)
+    if screenexists >= 1:
+        global downbutton
+        global minutelabel
+        global upbutton
+        global Confirm
+        global Reminder
+        if l > 2:
+            downbutton.destroy()
+        minutelabel.destroy()
+        if l < 5:
+            upbutton.destroy()
+        Confirm.destroy()
+        Reminder.destroy()
+    if iteration == 1:
+        screen = Toplevel(screen0)
+        screen.attributes('-fullscreen', True)
+        screen.title()
+    iteration+=1
     useimages()
 
 
