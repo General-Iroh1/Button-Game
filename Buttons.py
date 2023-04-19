@@ -903,9 +903,11 @@ def Test():
         global upbutton
         global Confirm
         global Reminder
-        downbutton.destroy()
+        if l >= 2:
+            downbutton.destroy()
         minutelabel.destroy()
-        upbutton.destroy()
+        if l <= 5:
+            upbutton.destroy()
         Confirm.destroy()
         Reminder.destroy()
     score = 0
@@ -949,10 +951,10 @@ def testscreen():
         global upbutton
         global Confirm
         global Reminder
-        if l > 2:
+        if l >= 1 and screenexists >= 2:
             downbutton.destroy()
         minutelabel.destroy()
-        if l < 5:
+        if l < 6:
             upbutton.destroy()
         Confirm.destroy()
         Reminder.destroy()
