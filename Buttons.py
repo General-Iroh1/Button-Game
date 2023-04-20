@@ -128,6 +128,7 @@ h = 1
 TimedStarted=0
 u = 0
 w = 1
+Gameoveroccured = 0
 s = 0
 TimedFinished = 0
 z = 0
@@ -158,7 +159,10 @@ def GameOver3():
     global u
     global w
     global aa
+    global screen6
     global Button3Done
+    global Gameoveroccured
+    Gameoveroccured+=1
     screen6.destroy()
     aa+=1
     w+=1
@@ -166,8 +170,6 @@ def GameOver3():
     if o >= 1:
         r+=1
     l = 1
-    if s>= 1:
-        screen3.destroy()
     sscore = str(score)
     global screen2
     screen2=Toplevel(screen0)
@@ -176,7 +178,7 @@ def GameOver3():
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Quit", command=quit3).pack()
-    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
+    Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
 
 
 
@@ -207,7 +209,11 @@ def Buttons3():
     global c
     global n
     global y
+    global screen9
     global iteration
+    global Gameoveroccured
+    if Gameoveroccured >= 1:
+        screen9.destroy()
     iteration = 1
     TimedStarted+=1
     screen.destroy()
@@ -852,6 +858,25 @@ def ForTheWorthy():
     Button(screen7,text="Continue",command=Buttons5,bg='red').pack()
     Label(screen7,text="",bg='red').pack()
     Button(screen7,text="Quit",command=quit,bg='red').pack()
+def aftergamestartingscreen():
+    global screen2
+    global screen9
+    screen2.destroy()
+    screen9 = tkinter.Tk()
+    screen9.attributes('-fullscreen', True)
+    screen9.title("Buttons, and more buttons!")
+    Label(screen9,text = "What gamemode would you like to play?").pack()
+    Label(screen9,text = "").pack()
+    global btn
+    btn = Button(screen9, text = 'Normal',bg = 'green', command = Buttons1).pack()
+    global e
+    global f
+
+    Button(screen9,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
+    Button(screen9,text="Timed",bg = 'orange',command=Test).pack()
+
+    Button(screen9,text="The screen is lava!",bg='red',command=Buttons4).pack()
+    Button(screen9, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
 def Starting_Screen():
     global screen0
     screen0 = tkinter.Tk()
@@ -869,8 +894,6 @@ def Starting_Screen():
 
     Button(screen0,text="The screen is lava!",bg='red',command=Buttons4).pack()
     Button(screen0, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
-    screen0.mainloop()
-
     screen0.mainloop()
 def up():
         global l
