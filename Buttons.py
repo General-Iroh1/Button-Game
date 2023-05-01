@@ -61,7 +61,7 @@ def Retry4():
     global e
     global f
     btn1.place(x=f, y=e)
-def Buttons4():
+def Buttons4(Event):
     global screen
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
@@ -72,7 +72,7 @@ def Buttons4():
     global e
     global f
     btn.place(x=f, y=e)
-    screen.mainloop()
+    screen0.mainloop()
 def Score4():
     global l
     global s
@@ -179,24 +179,6 @@ def GameOver3():
     Button(screen2,text="Quit", command=quit3).pack()
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
 addbutton=0
-def secret(E):
-    global addbutton
-    global extrabutton1
-    global extrabutton2
-    global extrabutton3
-    global extrabutton4
-    global extrabutton5
-    addbutton +=1
-    if addbutton == 1:
-        extrabutton1 = Button(screen6, text="Click me.")
-    if addbutton == 2:
-        extrabutton2 = Button(screen6, text="Click me.")
-    if addbutton == 3:
-        extrabutton3 = Button(screen6, text="Click me.")
-    if addbutton == 4:
-        extrabutton4 = Button(screen6, text="Click me.")
-    if addbutton == 5:
-        extrabutton5 = Button(screen6, text="Click me.")
 def Buttons3():
     global TimedStarted
     global TimedFinished
@@ -226,6 +208,7 @@ def Buttons3():
     global screen9
     global iteration
     global Gameoveroccured
+    screen0.unbind()
     iteration = 1
     TimedStarted+=1
     screen.destroy()
@@ -254,7 +237,6 @@ def Buttons3():
     time1.place(relx=0.5, rely=0.5, anchor='center')
 
     btn2 = Button(screen6, text="Click me ;)", command=GameOver3)
-    screen6.bind('<Tab>',secret)
     j = random.randint(0, 760)
     k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
@@ -403,7 +385,7 @@ def Retry2():
     j = random.randint(0,760)
     k = random.randint(1,1520)
     btn3.place(x=k, y=j)
-def Buttons2():
+def Buttons2(Event):
     global screen
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
@@ -417,7 +399,7 @@ def Buttons2():
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="Click me ;)",command=GameOver2)
-    screen.mainloop()
+    screen0.mainloop()
 def newbutton():
     global screen
     global screen3
@@ -475,129 +457,6 @@ def Score2():
     newbutton()
     c = 0
 
-#Normal
-n = 0
-x = 0
-s = 0
-c = 0
-l = 1
-y = 1
-score = 0
-e = random.randint(0,760)
-f = random.randint(1,1520)
-FinishedRegular = 0
-print (e)
-print (f)
-fe =str(f)
-ef =str(e)
-def quit1():
-    global FinishedRegular
-    FinishedRegular+=1
-    quit()
-def GameOver1():
-    global l
-    global a
-    l = 1
-    if s>= 1:
-        screen3.destroy()
-    sscore = str(score)
-    global screen2
-    screen2=Toplevel(screen0)
-    screen2.attributes('-fullscreen', True)
-    screen2.title("Game Over!")
-    Label(screen2,text="You got a score of "+sscore).pack()
-    Label(screen2,text="Game Over! Better luck next time!").pack()
-    Button(screen2,text="Retry", command=Retry1).pack()
-    Button(screen2,text="Quit", command=quit1).pack()
-    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
-def Retry1():
-    global y
-    y+=1
-    global l
-    l+=1
-    global c
-    c+=1
-    global x
-    if x >= 1:
-        score == 0
-    global s
-    s+=1
-    global screen3
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    Label(screen3,text = "").pack()
-    global btn1
-    btn1 = Button(screen3, text = 'Click me !', command = Score1)
-    global e
-    global f
-    btn1.place(x=f, y=e)
-    global btn3
-    btn3 =Button(screen3,text="Click me ;)",command=GameOver1)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn3.place(x=k, y=j)
-def Buttons1():
-    global screen
-    screen = Toplevel(screen0)
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
-    Label(text = "").pack()
-    global btn
-    btn = Button(screen, text = 'Click me !', command = Score1)
-    global e
-    global f
-    btn.place(x=f, y=e)
-    Label(text = "").pack()
-    global btn2
-    btn2 =Button(screen,text="Click me ;)",command=GameOver1)
-    screen.mainloop()
-def Score1():
-    global l
-    global s
-    global c
-    global score
-    if c == 1:
-        global score
-        score = 0
-    if s >= 1:
-        global x
-        x +=1
-    if c != 1:
-        x = 0
-    global l
-    if x == 1 and l == 1:
-        score = 0
-    global n
-    n+=1
-    if n == 1:
-        score = 0
-        score  = score + 1
-        print(score)
-    else:
-        if l == 2:
-            score= score+1
-            print (score)
-            global e
-            global f
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
-            btn1.place(x=f, y=e)
-        if l == 1:
-            score= score+1
-            print (score)
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
-            btn.place(x=f, y=e)
-        if y == 1:
-            j = random.randint(0,760)
-            k = random.randint(1,1520)
-            btn2.place(x=k, y=j)
-        if y == 2:
-            j = random.randint(0,760)
-            k = random.randint(1,1520)
-            btn3.place(x=k, y=j)
-    c = 0
 #For The Worthy
 b = 1
 i = 0
@@ -876,13 +735,14 @@ def aftergamestartingscreen():
     Label(screen9,text = "What gamemode would you like to play?").pack()
     Label(screen9,text = "").pack()
     global btn
-    btn = Button(screen9, text = 'Normal',bg = 'green', command = Buttons1).pack()
     global e
     global f
 
     Button(screen9,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
-    Button(screen9,text="Timed",bg = 'orange',command=Test).pack()
-
+    Button(screen9,text="Timed",bg = 'orange',command=Test2).pack()
+    screen0.bind('<KeyPress-1>',Buttons2)
+    screen0.bind('<KeyPress-2>',Test1)
+    screen0.bind('<KeyPress-3>',Buttons4)
     Button(screen9,text="The screen is lava!",bg='red',command=Buttons4).pack()
     Button(screen9, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
     aftergame+=1
@@ -894,15 +754,16 @@ def Starting_Screen():
     Label(screen0,text = "What gamemode would you like to play?").pack()
     Label(screen0,text = "").pack()
     global btn
-    btn = Button(screen0, text = 'Normal',bg = 'green', command = Buttons1).pack()
     global e
     global f
-
     Button(screen0,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
-    Button(screen0,text="Timed",bg = 'orange',command=Test).pack()
+    Button(screen0,text="Timed",bg = 'orange',command=Test3).pack()
 
     Button(screen0,text="The screen is lava!",bg='red',command=Buttons4).pack()
     Button(screen0, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
+    screen0.bind('<KeyPress-1>',Buttons2)
+    screen0.bind('<KeyPress-2>',Test)
+    screen0.bind('<KeyPress-3>',Buttons4)
     screen0.mainloop()
 def up():
         global l
@@ -921,7 +782,7 @@ def down():
 mainmenuclicked=1
 iteration = 1
 screenexists = 0
-def Test():
+def Test(event):
     global mainmenuclicked
     global v
     global l
@@ -930,8 +791,37 @@ def Test():
     global score
     global screenexists
     global aftergame
-    if aftergame == 1:
-        screen9.destroy()
+    if screenexists >= 1:
+        global downbutton
+        global minutelabel
+        global upbutton
+        global Confirm
+        global Reminder
+        if l >= 2:
+            downbutton.destroy()
+        minutelabel.destroy()
+        if l <= 5:
+            upbutton.destroy()
+        Confirm.destroy()
+        Reminder.destroy()
+    score = 0
+    TimedFinished +=1
+    v = 0
+    mainmenuclicked += 1
+    if mainmenuclicked >= 3:
+        screen6.destroy()
+    if mainmenuclicked == 1:
+            l=1
+    testscreen()
+def Test3():
+    global mainmenuclicked
+    global v
+    global l
+    global TimedStarted
+    global TimedFinished
+    global score
+    global screenexists
+    global aftergame
     if screenexists >= 1:
         global downbutton
         global minutelabel
@@ -975,7 +865,6 @@ def useimages():
     global screenexists
     screenexists +=1
 
-
 def testscreen():
     global iteration
     global screenexists
@@ -1001,7 +890,203 @@ def testscreen():
     iteration+=1
     aftergame = 0
     useimages()
+def up2():
+        global l
+        l +=1
+        if mainmenuclicked >= 3:
+            screen.after(0, Test2)
+        else:
+            screen.after(0, testscreen2)
+def down2():
+        global l
+        l-=1
+        if mainmenuclicked >= 3:
+            screen.after(0, Test2)
+        else:
+            screen.after(0, testscreen2)
+mainmenuclicked=1
+iteration = 1
+screenexists1 = 0
+def Test2():
+    global mainmenuclicked
+    global screenexists
+    global v
+    global l
+    global TimedStarted
+    global TimedFinished
+    global score
+    global aftergame
+    mainmenuclicked = 1
+    screenexists = 0
+    if screenexists1 >= 1:
+        global downbutton2
+        global minutelabel2
+        global upbutton2
+        global Confirm2
+        global Reminder2
+        if l >= 2:
+            downbutton2.destroy()
+        minutelabel2.destroy()
+        if l <= 5:
+            upbutton2.destroy()
+        Confirm2.destroy()
+        Reminder2.destroy()
+    score = 0
+    TimedFinished +=1
+    v = 0
+    mainmenuclicked += 1
+    if mainmenuclicked >= 3:
+        screen6.destroy()
+    if mainmenuclicked == 1:
+            l=1
+    testscreen2()
+def useimages2():
+    if l > 1:
+        global downbutton2
+        downbutton2 = Button(screen, text = l-1,command=down2)
+        downbutton2.pack()
+    global minutelabel2
+    minutelabel2= Label(screen,text=l,font=('Calibri', 26))
+    minutelabel2.pack()
+    if l < 5:
+        global upbutton2
+        upbutton2 = Button(screen, text= l+1,command=up2)
+        upbutton2.pack()
+    global Confirm2
+    Confirm2 = Button(screen,text="Confirm", command=Buttons3)
+    Confirm2.pack()
+    global Reminder2
+    Reminder2= Label(screen,text="Remember, this is measured in minutes!")
+    Reminder2.pack()
+    global screenexists1
+    screenexists1 +=1
 
+def testscreen2():
+    global iteration
+    global screenexists
+    global aftergame
+    global screen,mainmenuclicked
+    if screenexists >= 1:
+        global downbutton2
+        global minutelabel2
+        global upbutton2
+        global Confirm2
+        global Reminder2
+        if l >= 1:
+            downbutton2.destroy()
+        minutelabel2.destroy()
+        if l < 6:
+            upbutton2.destroy()
+        Confirm2.destroy()
+        Reminder2.destroy()
+    if iteration == 1:
+        screen = Toplevel(screen0)
+        screen.attributes('-fullscreen', True)
+        screen.title()
+    iteration+=1
+    if aftergame == 1:
+        screen9.destroy()
+    aftergame = 0
+    useimages()
+
+def up1():
+        global l
+        l +=1
+        if mainmenuclicked >= 3:
+            screen.after(0, Test1)
+        else:
+            screen.after(0, testscreen1)
+def down1():
+        global l
+        l-=1
+        if mainmenuclicked >= 3:
+            screen.after(0, Test1)
+        else:
+            screen.after(0, testscreen1)
+mainmenuclicked=1
+iteration = 1
+screenexists1 = 0
+def Test1(Event):
+    global mainmenuclicked
+    global screenexists
+    global v
+    global l
+    global TimedStarted
+    global TimedFinished
+    global score
+    global aftergame
+    mainmenuclicked = 1
+    screenexists = 0
+    if screenexists1 >= 1:
+        global downbutton1
+        global minutelabel1
+        global upbutton1
+        global Confirm1
+        global Reminder1
+        if l >= 2:
+            downbutton1.destroy()
+        minutelabel1.destroy()
+        if l <= 5:
+            upbutton1.destroy()
+        Confirm1.destroy()
+        Reminder1.destroy()
+    score = 0
+    TimedFinished +=1
+    v = 0
+    mainmenuclicked += 1
+    if mainmenuclicked >= 3:
+        screen6.destroy()
+    if mainmenuclicked == 1:
+            l=1
+    testscreen1()
+def useimages1():
+    if l > 1:
+        global downbutton1
+        downbutton1 = Button(screen, text = l-1,command=down1)
+        downbutton1.pack()
+    global minutelabel1
+    minutelabel1= Label(screen,text=l,font=('Calibri', 26))
+    minutelabel1.pack()
+    if l < 5:
+        global upbutton1
+        upbutton1 = Button(screen, text= l+1,command=up1)
+        upbutton1.pack()
+    global Confirm1
+    Confirm1 = Button(screen,text="Confirm", command=Buttons3)
+    Confirm1.pack()
+    global Reminder1
+    Reminder1= Label(screen,text="Remember, this is measured in minutes!")
+    Reminder1.pack()
+    global screenexists1
+    screenexists1 +=1
+
+def testscreen1():
+    global iteration
+    global screenexists
+    global aftergame
+    global screen,mainmenuclicked
+    if screenexists >= 1:
+        global downbutton1
+        global minutelabel1
+        global upbutton1
+        global Confirm1
+        global Reminder1
+        if l >= 1:
+            downbutton1.destroy()
+        minutelabel1.destroy()
+        if l < 6:
+            upbutton.destroy()
+        Confirm1.destroy()
+        Reminder1.destroy()
+    if iteration == 1:
+        screen = Toplevel(screen0)
+        screen.attributes('-fullscreen', True)
+        screen.title()
+    iteration+=1
+    if aftergame == 1:
+        screen9.destroy()
+    aftergame = 0
+    useimages()
 
 global all
 Starting_Screen()

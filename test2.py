@@ -1,54 +1,10 @@
-import tkinter
-from tkinter import *
-l=1
-p = 0
-hi =  tkinter.Tk()
-downarrow = PhotoImage(file=r"D:/Applications/Python/Button-Game/button_down.png")
-uparrow = PhotoImage(file=r"D:/PC/Pictures/Saved Pictures/button_up.png")
-def up():
-    global l
-    l +=1
-    screen.after(1, testscreen)
-hi.withdraw()
-def down():
-    global l
-    l-=1
-    screen.after(1, testscreen)
-def testscreen():
-    global p
-    p += 1
-    global screen
-    screen = Toplevel(hi)
-    screen.attributes('-fullscreen', True)
-    screen.title("Buttons, and more buttons!")
-    if l ==5:
-        Label(screen,text="5 minutes is the max you can go!",font=('Times', 26)).pack()
-    if l < 5:
-        Button(screen, image=uparrow,command=up,width=300,height=200, pady=10).pack()
-    Label(screen,text=l,font=('Calibri', 26)).pack()
-    if l == 1:
-        Label(screen,text="1 minute is the lowest you can go!",font=('Times', 26)).pack()
-    if l> 1:
-        Button(screen, image=downarrow,command=down,width=300,height=200, pady=10).pack()
-    Button(screen,text="Confirm", command=countdown).pack()
-    Label(screen,text="Remember, this is measured in minutes!").pack()
-    screen.mainloop()
-import tkinter
-from tkinter import *
-import time
-def countdown():
-    global l
-    t = l*60
-    while t>0:
-        print(t, end="\r")
-        time.sleep(1)
-        t -=1
-        if t==0 or t<0:
-            screen2 = Toplevel(hi)
-            screen2.attributes('-fullscreen', True)
-            screen2.title("Buttons, and more buttons!")
-            Label(screen2,text="Great job!")
-            break
+import tkinter as tk
 
-global all
-testscreen()
+root = tk.Tk()
+
+def my_function(event):
+    print("Key 1 was pressed")
+
+root.bind("<1>", my_function)
+
+root.mainloop()
