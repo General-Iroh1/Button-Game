@@ -22,47 +22,44 @@ print (f)
 fe =str(f)
 ef =str(e)
 def quit4():
-    global FinishedLava
-    FinishedLava+=1
     quit()
 def GameOver4():
     global l
+    global score
     global screen2
+    screen.destroy()
     l = 1
-    if s>= 1:
-        screen2.destroy()
-        screen3.destroy()
     sscore = str(score)
     screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
-    Button(screen2,text="Retry", command=Retry4).pack()
     Button(screen2,text="Quit", command=quit4).pack()
-    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
-def Retry4():
-    global l
-    l+=1
-    global c
-    c+=1
-    global x
-    if x >= 1:
-        score == 0
-    global s
-    s+=1
-    global screen3
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
-    global btn1
-    btn1 = Button(screen3, text = 'Click me !', bg='lime', command = Score4)
-    global e
-    global f
-    btn1.place(x=f, y=e)
+    global FinishedLava
+    FinishedLava+=1
+    Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+    score = 0
 def Buttons4(Event):
     global screen
+    global aftergame
+    if aftergame>=1:
+        screen9.destroy()
+    screen = Toplevel(screen0)
+    screen.attributes('-fullscreen', True)
+    screen.title("Buttons, and more buttons!")
+    Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
+    global btn
+    btn = Button(screen, text = 'Click me !', bg = 'lime', command = Score4)
+    global e
+    global f
+    btn.place(x=f, y=e)
+    screen0.mainloop()
+def Buttons4A():
+    global screen
+    global aftergame
+    if aftergame>=1:
+        screen9.destroy()
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
@@ -96,14 +93,6 @@ def Score4():
         score  = score + 1
         print(score)
     else:
-        if l == 2:
-            score= score+1
-            print (score)
-            global e
-            global f
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
-            btn1.place(x=f, y=e)
         if l == 1:
             score= score+1
             print (score)
@@ -118,6 +107,7 @@ b = 1
 i = 0
 k = 0
 n = 0
+score = 0
 Button3Done = 0
 a = 0
 r = 0
@@ -146,8 +136,6 @@ print (f)
 fe =str(f)
 ef =str(e)
 def quit3():
-    global FinishedTimed
-    FinishedTimed+=1
     quit()
 def GameOver3():
     global i
@@ -159,8 +147,12 @@ def GameOver3():
     global w
     global aa
     global screen6
+    global screen2
+    global score
     global Button3Done
     global Gameoveroccured
+    global FinishedTimed
+    FinishedTimed+=1
     Gameoveroccured+=1
     screen6.destroy()
     aa+=1
@@ -178,10 +170,13 @@ def GameOver3():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Quit", command=quit3).pack()
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+    score = 0
 addbutton=0
+unbinddone = 0
 def Buttons3():
     global TimedStarted
     global TimedFinished
+    global screen9
     global i
     global q
     global b
@@ -197,6 +192,7 @@ def Buttons3():
     global time1
     global l
     global score
+    global unbinddone
     global x
     global s
     global v
@@ -207,8 +203,10 @@ def Buttons3():
     global y
     global screen9
     global iteration
+    global aftergame
     global Gameoveroccured
-    screen0.unbind()
+    if aftergame>=1:
+        screen9.destroy()
     iteration = 1
     TimedStarted+=1
     screen.destroy()
@@ -242,6 +240,7 @@ def Buttons3():
     btn2.place(x=k, y=j)
     Button3Done  = 1
     TimedFinished = 0
+    unbinddone +=1
     z+=1
     b += 1
     q = 0
@@ -334,59 +333,49 @@ print (f)
 fe =str(f)
 ef =str(e)
 def quit2():
-    global FinishedMayhem
-    FinishedMayhem+=1
     quit()
 def GameOver2():
+    global screen
     global screen2
     global a
-    if a >= 1:
-        screen2.destroy()
-        screen3.destroy()
+    global score
+    screen.destroy()
+    global FinishedMayhem
+    FinishedMayhem+=1
     global l
     l = 1
-    if s>= 1:
-        screen3.destroy()
     sscore = str(score)
     screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
-    Button(screen2,text="Retry", command=Retry2).pack()
     Button(screen2,text="Quit", command=quit2).pack()
-    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
-def Retry2():
-    global a
-    a+=1
-    global y
-    y+=1
-    global l
-    l+=1
-    global c
-    c+=1
-    global x
-    if x >= 1:
-        score == 0
-    global s
-    s+=1
-    global screen3
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    Label(screen3,text = "").pack()
-    global btn1
-    btn1 = Button(screen3, text = 'Click me !', command = Score2)
-    global e
-    global f
-    btn1.place(x=f, y=e)
-    global btn3
-    btn3 =Button(screen3,text="Click me ;)",command=GameOver2)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn3.place(x=k, y=j)
+    Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+    score = 0
 def Buttons2(Event):
     global screen
+    global aftergame
+    if aftergame>=1:
+        screen9.destroy()
+    screen = Toplevel(screen0)
+    screen.attributes('-fullscreen', True)
+    screen.title("Buttons, and more buttons!")
+    Label(text = "").pack()
+    global btn
+    btn = Button(screen, text = 'Click me !', command = Score2)
+    global e
+    global f
+    btn.place(x=f, y=e)
+    Label(text = "").pack()
+    global btn2
+    btn2 =Button(screen,text="Click me ;)",command=GameOver2)
+    screen0.mainloop()
+def Buttons2A():
+    global screen
+    global aftergame
+    if aftergame>=1:
+        screen9.destroy()
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
@@ -402,13 +391,9 @@ def Buttons2(Event):
     screen0.mainloop()
 def newbutton():
     global screen
-    global screen3
     if score == 1 or 2 or 3 or 4 or 5 or 10 or 20 or 30 or 40 or 50 or 60 or 70 or 75 or 100:
         global btn2
         btn2 =Button(screen,text="Click me ;)",command=GameOver2)
-    if y == 2 and score == 1 or 2 or 3 or 4 or 5 or 10 or 20 or 30 or 40 or 50 or 60 or 70 or 75 or 100:
-        global btn3
-        btn3 =Button(screen3,text="Click me ;)",command=GameOver2)
 def Score2():
     global l
     global s
@@ -432,14 +417,6 @@ def Score2():
         score  = score + 1
         print(score)
     else:
-        if l == 2:
-            score= score+1
-            print (score)
-            global e
-            global f
-            e = random.randint(0,760)
-            f = random.randint(1,1520)
-            btn1.place(x=f, y=e)
         if l == 1:
             score= score+1
             print (score)
@@ -450,10 +427,6 @@ def Score2():
             j = random.randint(0,760)
             k = random.randint(1,1520)
             btn2.place(x=k, y=j)
-        if y == 2:
-            j = random.randint(0,760)
-            k = random.randint(1,1520)
-            btn3.place(x=k, y=j)
     newbutton()
     c = 0
 
@@ -500,11 +473,10 @@ def GameOver5():
     global aa
     aa+=1
     w+=1
+    global score
     u+=1
     if o >= 1:
         r+=1
-    if s>= 1:
-        screen3.destroy()
     sscore = str(score)
     global screen2
     screen2=Toplevel(screen0)
@@ -512,63 +484,9 @@ def GameOver5():
     screen2.title("Game Over!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
-    Button(screen2,text="Retry", command=Retry5).pack()
     Button(screen2,text="Quit", command=quit5).pack()
-    Button(screen2,text="Main Menu", command=Starting_Screen).pack()
-def Retry5():
-    global i
-    global a
-    global y
-    global o
-    global u
-    global p
-    global score
-    global screen6
-    global w
-    global r
-    global s
-    global t1
-    global time2
-    global screen3
-    global c 
-    global btn1
-    global btn3
-    global aa
-    global t1
-    p = 2
-    y=2
-    o+=1
-    i = 0
-    c+=1
-
-    if u >= 1:
-        if r >= 1:
-            score = 0
-    u = 0
-    s+=1
-
-    if a >= 1:
-        screen3.destroy()
-    screen2.destroy()
-
-    screen3 = Toplevel(screen0)
-    screen3.attributes('-fullscreen', True)
-    screen3.title("Buttons, and more buttons!")
-    if aa >= 1:
-        t1 = 30
-    time2 = Label(screen3,text = t1, font=("Arial", 24), fg="red")
-    time2.place(relx=0.5, rely=0.5, anchor='center')
-
-
-    Button(screen3,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver5).pack()
-    btn1 = Button(screen3, text = 'Click me !', command = Score5)
-    j = random.randint(0,760)
-    k = random.randint(1,1520)
-    btn1.place(x=k, y=j)
-
-    w += 1
-    countdown1_5()
-
+    Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+    score = 0
 
 
 
@@ -651,22 +569,6 @@ def update_screen_5():
 
 
 
-def countdown1_5():
-    global aa
-    aa=0
-    update_screen1_5()
-def update_screen1_5():
-    global t1
-    global a
-    global time2
-    global screen3
-    a+=1
-    if t1 > 0:
-        time2.config(text=t1)
-        screen3.after(1000, countdown1_5)
-        t1 -= 1
-    if t1==0:
-        GameOver5()
 def Score5():
     global m
     global b
@@ -702,11 +604,8 @@ def Score5():
             f = random.randint(1, 1520)
             btn.place(x=f, y=e)
             Buttons5()
-        if y >= 2:
-            j = random.randint(0, 760)
-            k = random.randint(1, 1520)
-            btn1.place(x=k, y=j)
-            Retry5()
+
+
 
     u = 0
 def ForTheWorthy():
@@ -715,7 +614,6 @@ def ForTheWorthy():
     screen7.attributes('-fullscreen', True)
     screen7.title("...")
     screen7.configure(bg='red')
-    Label(screen7,text="Only those who have TRUE experience may get past this gate").pack()
     Label(screen7,text="",bg='red').pack()
     Label(screen7,text="",bg='red').pack()
     Label(screen7,text="",bg='red').pack()
@@ -728,7 +626,12 @@ def aftergamestartingscreen():
     global screen2
     global screen9
     global aftergame
-    screen2.destroy()
+    if FinishedMayhem >=1:
+        screen2.destroy()
+    if FinishedLava >=1:
+        screen2.destroy()
+    if FinishedTimed >=1:
+        screen2.destroy()
     screen9 = tkinter.Tk()
     screen9.attributes('-fullscreen', True)
     screen9.title("Buttons, and more buttons!")
@@ -738,16 +641,24 @@ def aftergamestartingscreen():
     global e
     global f
 
-    Button(screen9,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
+    Button(screen9,text="Button Mayhem!",bg = 'green',command=Buttons2A).pack()
     Button(screen9,text="Timed",bg = 'orange',command=Test2).pack()
-    screen0.bind('<KeyPress-1>',Buttons2)
-    screen0.bind('<KeyPress-2>',Test1)
-    screen0.bind('<KeyPress-3>',Buttons4)
-    Button(screen9,text="The screen is lava!",bg='red',command=Buttons4).pack()
-    Button(screen9, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
+    screen9.bind('<KeyPress-1>',Buttons2)
+    screen9.bind('<KeyPress-2>',Test1)
+    screen9.bind('<KeyPress-3>',Buttons4)
+    Button(screen9,text="The screen is lava!",bg='red',command=Buttons4A).pack()
+    if FinishedLava and FinishedMayhem and FinishedTimed >= 5:
+        Label(screen9).pack()
+        Label(screen9).pack()
+        Label(screen9).pack()
+        Label(screen9).pack()
+        Label(screen9).pack()
+        Button(screen9, text="Legendary",bg='yellow',command=ForTheWorthy).pack()
     aftergame+=1
 def Starting_Screen():
+    global score
     global screen0
+    score = 0
     screen0 = tkinter.Tk()
     screen0.attributes('-fullscreen', True)
     screen0.title("Buttons, and more buttons!")
@@ -756,11 +667,10 @@ def Starting_Screen():
     global btn
     global e
     global f
-    Button(screen0,text="Button Mayhem!",bg = 'blue',command=Buttons2).pack()
+    Button(screen0,text="Button Mayhem!",bg = 'green',command=Buttons2A).pack()
     Button(screen0,text="Timed",bg = 'orange',command=Test3).pack()
 
-    Button(screen0,text="The screen is lava!",bg='red',command=Buttons4).pack()
-    Button(screen0, text="For The Worthy",bg='purple',command=ForTheWorthy).pack()
+    Button(screen0,text="The screen is lava!",bg='red',command=Buttons4A).pack()
     screen0.bind('<KeyPress-1>',Buttons2)
     screen0.bind('<KeyPress-2>',Test)
     screen0.bind('<KeyPress-3>',Buttons4)
@@ -783,6 +693,10 @@ mainmenuclicked=1
 iteration = 1
 screenexists = 0
 def Test(event):
+    if unbinddone == 0:
+        screen0.unbind('<KeyPress-1>')
+        screen0.unbind('<KeyPress-2>')
+        screen0.unbind('<KeyPress-3>')
     global mainmenuclicked
     global v
     global l
@@ -908,6 +822,7 @@ mainmenuclicked=1
 iteration = 1
 screenexists1 = 0
 def Test2():
+    
     global mainmenuclicked
     global screenexists
     global v
@@ -1004,6 +919,7 @@ def down1():
         else:
             screen.after(0, testscreen1)
 mainmenuclicked=1
+unbinddone = 0
 iteration = 1
 screenexists1 = 0
 def Test1(Event):
@@ -1014,7 +930,13 @@ def Test1(Event):
     global TimedStarted
     global TimedFinished
     global score
+    global unbinddone
     global aftergame
+    if unbinddone == 0:
+        screen9.unbind('<KeyPress-1>')
+        screen9.unbind('<KeyPress-2>')
+        screen9.unbind('<KeyPress-3>')
+        unbinddone+=1
     mainmenuclicked = 1
     screenexists = 0
     if screenexists1 >= 1:
@@ -1062,7 +984,7 @@ def useimages1():
 
 def testscreen1():
     global iteration
-    global screenexists
+    global screenexists                
     global aftergame
     global screen,mainmenuclicked
     if screenexists >= 1:
