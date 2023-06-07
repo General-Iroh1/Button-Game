@@ -4,6 +4,9 @@ import random
 import time
 from playsound import playsound
 from tkinter import messagebox
+from pygame import mixer
+import time
+unbind= 0
 #The screen is lava!
 b=0
 n = 0
@@ -24,15 +27,19 @@ ef =str(e)
 def quit4():
     quit()
 def GameOver4():
+    global screen9
     global l
     global score
     global screen2
+    mixer.music.stop()
     screen.destroy()
     l = 1
     sscore = str(score)
     screen2=Toplevel(screen0)
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
+    if Heatdeath >=1:
+        Label(screen2,text="You burnt!")
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Quit", command=quit4).pack()
@@ -41,6 +48,21 @@ def GameOver4():
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
     score = 0
 def Buttons4(Event):
+    global screen9
+    global unbind
+    if unbind >=1:
+        screen9.unbind('<KeyPress-1>')
+        screen9.unbind('<KeyPress-2>')
+        screen9.unbind('<KeyPress-3>')
+    else:
+        global screen0
+        screen0.unbind('<KeyPress-1>')
+        screen0.unbind('<KeyPress-2>')
+        screen0.unbind('<KeyPress-3>')
+    unbind+=1
+    mixer.init()
+    mixer.music.load('Lava.mp3')
+    mixer.music.play(-1)
     global screen
     global aftergame
     if aftergame>=1:
@@ -55,11 +77,28 @@ def Buttons4(Event):
     global f
     btn.place(x=f, y=e)
     screen0.mainloop()
+Heatdeath = 0
 def Buttons4A():
+    global screen9
+    global Lavatime
+    global unbind
+    if unbind >=1:
+        screen9.unbind('<KeyPress-1>')
+        screen9.unbind('<KeyPress-2>')
+        screen9.unbind('<KeyPress-3>')
+    else:
+        global screen0
+        screen0.unbind('<KeyPress-1>')
+        screen0.unbind('<KeyPress-2>')
+        screen0.unbind('<KeyPress-3>')
+    unbind+=1
     global screen
     global aftergame
     if aftergame>=1:
         screen9.destroy()
+    mixer.init()
+    mixer.music.load('Lava.mp3')
+    mixer.music.play(-1)
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
@@ -69,6 +108,16 @@ def Buttons4A():
     global e
     global f
     btn.place(x=f, y=e)
+    def LavatimeChecker():
+        global Lavatime
+        if Lavatime>0:
+            screen.after(1000, LavatimeChecker)
+            Lavatime-=1
+        else:
+            global Heatdeath
+            Heatdeath+=1
+            GameOver4()
+    LavatimeChecker()
     screen0.mainloop()
 def Score4():
     global l
@@ -152,6 +201,10 @@ def GameOver3():
     global Button3Done
     global Gameoveroccured
     global FinishedTimed
+    mixer.music.stop()
+    mixer.init()
+    mixer.music.load('Ring.mp3')
+    mixer.music.play()
     FinishedTimed+=1
     Gameoveroccured+=1
     screen6.destroy()
@@ -244,11 +297,14 @@ def Buttons3():
     z+=1
     b += 1
     q = 0
+    mixer.init()
+    mixer.music.load('Timed.mp3')
+    mixer.music.play(-1)
     if v ==0:
         countdown()
     
     screen0.mainloop()
-
+Lavatime = 4
 def countdown():
     global t
     update_screen()
@@ -335,6 +391,7 @@ ef =str(e)
 def quit2():
     quit()
 def GameOver2():
+    mixer.music.stop()
     global screen
     global screen2
     global a
@@ -354,6 +411,18 @@ def GameOver2():
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
     score = 0
 def Buttons2(Event):
+    global screen9
+    global unbind
+    if unbind >=1:
+        screen9.unbind('<KeyPress-1>')
+        screen9.unbind('<KeyPress-2>')
+        screen9.unbind('<KeyPress-3>')
+    else:
+        global screen0
+        screen0.unbind('<KeyPress-1>')
+        screen0.unbind('<KeyPress-2>')
+        screen0.unbind('<KeyPress-3>')
+    unbind+=1
     global screen
     global aftergame
     if aftergame>=1:
@@ -370,8 +439,23 @@ def Buttons2(Event):
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="Click me ;)",command=GameOver2)
+    mixer.init()
+    mixer.music.load('Button confusion.mp3')
+    mixer.music.play(-1)
     screen0.mainloop()
 def Buttons2A():
+    global screen9
+    global unbind
+    if unbind >=1:
+        screen9.unbind('<KeyPress-1>')
+        screen9.unbind('<KeyPress-2>')
+        screen9.unbind('<KeyPress-3>')
+    else:
+        global screen0
+        screen0.unbind('<KeyPress-1>')
+        screen0.unbind('<KeyPress-2>')
+        screen0.unbind('<KeyPress-3>')
+    unbind+=1
     global screen
     global aftergame
     if aftergame>=1:
@@ -388,6 +472,9 @@ def Buttons2A():
     Label(text = "").pack()
     global btn2
     btn2 =Button(screen,text="Click me ;)",command=GameOver2)
+    mixer.init()
+    mixer.music.load('Button confusion.mp3')
+    mixer.music.play(-1)
     screen0.mainloop()
 def newbutton():
     global screen
@@ -471,6 +558,10 @@ def GameOver5():
     global u
     global w
     global aa
+    global screen11
+    global screen9
+    screen.destroy()
+    screen11.destroy()
     aa+=1
     w+=1
     global score
@@ -486,23 +577,25 @@ def GameOver5():
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Quit", command=quit5).pack()
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+
+    mixer.music.stop()
+
     score = 0
-
-
+t5 = 30
 
 def Buttons5():
     global i
     global q
     global b
     global h
-    global t
+    global t5
     global e
     global f
     global btn
     global btn2
-    global screen6
+    global screen11
     global screen
-    global time1
+    global time5
     global l
     global score
     global x
@@ -513,6 +606,9 @@ def Buttons5():
     global c
     global n
     global y
+    global Onetime
+    if Onetime == 0:
+        screen7.destroy()
     y=1
     i+=1
     p=1
@@ -520,53 +616,45 @@ def Buttons5():
     f = random.randint(1,1520)
 
     if v == 0:
-        t = 30
+        t5 = 30
 
-    screen6 = Toplevel(screen0)
-    if z >= 1:
-        screen6.destroy()
-    screen6.attributes('-fullscreen', True)
-    screen6.title("Buttons, and more buttons!")
+    screen11 = Toplevel(screen0)
+    screen11.attributes('-fullscreen', True)
+    screen11.title("Buttons, and more buttons!")
 
-
-
-    time1 = Label(screen6, text=t, font=("Arial", 24), fg="red")
-    time1.place(relx=0.5, rely=0.5, anchor='center')
-
-    Button(screen6,width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver5).pack()
-    btn = Button(screen6, text='Click me!', command=Score5)
+    Button(screen11,width= '1523',height= '1523',text=" ",bg = 'red',command=GameOver5).pack()
+    time5 = Label(screen11, text=t5, font=("Arial", 24), fg="black", bg="red")
+    time5.place(relx=0.5, rely=0.5, anchor='center')
+    btn = Button(screen11, text='Click me!', command=Score5)
     btn.place(x=f, y=e)
     z+=1
     b += 1
     q = 0
-    if v ==0:
-        countdown_5()
-    
-    screen0.mainloop()
+    if Onetime == 0:
+        mixer.init()
+        mixer.music.load('TheWorthyMusic.mp3')
+        mixer.music.play(-1)
+    Onetime += 1
+    countdown5()
+#fix timer
 
-def countdown_5():
-    global t
-    update_screen_5()
-    playsound('TheWorthyMusic.mp3')
+def countdown5():
+    global t5
+    update_screen5()
 
-def update_screen_5():
+def update_screen5():
     global v
     v+=1
-    global t 
-    global time1
-    global screen6
+    global t5
+    global time5
+    global screen11
     global w
-    if w ==2:
-        screen6.destroy()
-    if t > 0:
-        time1.config(text=t)
-        screen6.after(1000, update_screen_5)
+    if t5 > 0:
+        time5.config(text=t5)
+        screen11.after(1000, update_screen5)
         t -= 1
     else:
         GameOver5()
-
-
-
 
 
 def Score5():
@@ -577,7 +665,7 @@ def Score5():
     global c
     global score
     global x
-    global u
+    global u 
     global n
     global btn
     global btn2
@@ -609,8 +697,11 @@ def Score5():
 
     u = 0
 def ForTheWorthy():
+    screen9.destroy()
     global screen7
     screen7 = Toplevel(screen0)
+    global Onetime
+    Onetime = 0
     screen7.attributes('-fullscreen', True)
     screen7.title("...")
     screen7.configure(bg='red')
@@ -641,19 +732,18 @@ def aftergamestartingscreen():
     global e
     global f
 
-    Button(screen9,text="Button Mayhem!",bg = 'green',command=Buttons2A).pack()
+    Button(screen9,text="Button Confusion",bg = 'green',command=Buttons2A).pack()
     Button(screen9,text="Timed",bg = 'orange',command=Test2).pack()
     screen9.bind('<KeyPress-1>',Buttons2)
     screen9.bind('<KeyPress-2>',Test1)
     screen9.bind('<KeyPress-3>',Buttons4)
     Button(screen9,text="The screen is lava!",bg='red',command=Buttons4A).pack()
-    if FinishedLava and FinishedMayhem and FinishedTimed >= 5:
-        Label(screen9).pack()
-        Label(screen9).pack()
-        Label(screen9).pack()
-        Label(screen9).pack()
-        Label(screen9).pack()
-        Button(screen9, text="Legendary",bg='yellow',command=ForTheWorthy).pack()
+    Label(screen9).pack()
+    Label(screen9).pack()
+    Label(screen9).pack()
+    Label(screen9).pack()
+    Label(screen9).pack()
+    Button(screen9, text="Legendary",bg='yellow',command=ForTheWorthy).pack()
     aftergame+=1
 def Starting_Screen():
     global score
@@ -667,7 +757,7 @@ def Starting_Screen():
     global btn
     global e
     global f
-    Button(screen0,text="Button Mayhem!",bg = 'green',command=Buttons2A).pack()
+    Button(screen0,text="Button Confusion",bg = 'green',command=Buttons2A).pack()
     Button(screen0,text="Timed",bg = 'orange',command=Test3).pack()
 
     Button(screen0,text="The screen is lava!",bg='red',command=Buttons4A).pack()

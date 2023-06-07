@@ -1,10 +1,10 @@
-import tkinter as tk
 
-root = tk.Tk()
+from pygame import mixer
+import time
+mixer.init() #Initialzing pyamge mixer
 
-def my_function(event):
-    print("Key 1 was pressed")
+mixer.music.load('TheWorthyMusic.mp3') #Loading Music File
 
-root.bind("<1>", my_function)
+mixer.music.play() #Playing Music with Pygame
 
-root.mainloop()
+time.sleep(5)
