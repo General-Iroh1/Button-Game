@@ -30,6 +30,8 @@ def GameOver4():
     global screen9
     global l
     global score
+    global Heatdeath
+    global Lavatime
     global screen2
     mixer.music.stop()
     screen.destroy()
@@ -39,13 +41,14 @@ def GameOver4():
     screen2.attributes('-fullscreen', True)
     screen2.title("Game Over!")
     if Heatdeath >=1:
-        Label(screen2,text="You burnt!")
+        Label(screen2,text="You burnt!").pack()
     Label(screen2,text="You got a score of "+sscore).pack()
     Label(screen2,text="Game Over! Better luck next time!").pack()
     Button(screen2,text="Quit", command=quit4).pack()
     global FinishedLava
     FinishedLava+=1
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
+    Lavatime = 4
     score = 0
 def Buttons4(Event):
     global screen9
@@ -70,12 +73,23 @@ def Buttons4(Event):
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
+    Button(screen,  width= '1523',height= '1523',text="",bg = 'red',command=GameOver4).pack()
     global btn
-    btn = Button(screen, text = 'Click me !', bg = 'lime', command = Score4)
+    clickme = PhotoImage(file="Click me!.png")
+    btn = Button(screen, image=clickme, borderwidth=0,highlightthickness=0,activebackground='red',activeforeground='red', fg= 'red', bg="red",command = Score4)
     global e
     global f
     btn.place(x=f, y=e)
+    def LavatimeChecker():
+        global Lavatime
+        if Lavatime>0:
+            screen.after(1000, LavatimeChecker)
+            Lavatime-=1
+        else:
+            global Heatdeath
+            Heatdeath+=1
+            GameOver4()
+    LavatimeChecker()
     screen0.mainloop()
 Heatdeath = 0
 def Buttons4A():
@@ -102,9 +116,10 @@ def Buttons4A():
     screen = Toplevel(screen0)
     screen.attributes('-fullscreen', True)
     screen.title("Buttons, and more buttons!")
-    Button(screen,  width= '1523',height= '1523',text="Click me ;)",bg = 'red',command=GameOver4).pack()
+    Button(screen,  width= '1523',height= '1523',text="",bg = 'red',command=GameOver4).pack()
     global btn
-    btn = Button(screen, text = 'Click me !', bg = 'lime', command = Score4)
+    clickme = PhotoImage(file="Click me!.png")
+    btn = Button(screen, image=clickme, borderwidth=0,highlightthickness=0,activebackground='red',activeforeground='red', fg= 'red', bg="red",command = Score4)
     global e
     global f
     btn.place(x=f, y=e)
@@ -123,7 +138,9 @@ def Score4():
     global l
     global s
     global c
+    global Lavatime
     global score
+    Lavatime = 4
     if c == 1:
         global score
         score = 0
@@ -286,8 +303,8 @@ def Buttons3():
 
     time1 = Label(screen6, text=t, font=("Arial", 24), fg="red")
     time1.place(relx=0.5, rely=0.5, anchor='center')
-
-    btn2 = Button(screen6, text="Click me ;)", command=GameOver3)
+    clickme3 = s
+    btn2 = Button(screen6,image='',highlightthickness=0,activebackground='red',activeforeground='red', fg= 'red', bg="red",command = GameOver3)
     j = random.randint(0, 760)
     k = random.randint(1, 1520)
     btn2.place(x=k, y=j)
@@ -579,10 +596,10 @@ def GameOver5():
     Button(screen2,text="Main Menu", command=aftergamestartingscreen).pack()
 
     mixer.music.stop()
-
     score = 0
+Heatdeath2 = 0
 t5 = 30
-
+Lavatime2 = 3
 def Buttons5():
     global i
     global q
@@ -625,7 +642,7 @@ def Buttons5():
     Button(screen11,width= '1523',height= '1523',text=" ",bg = 'red',command=GameOver5).pack()
     time5 = Label(screen11, text=t5, font=("Arial", 24), fg="black", bg="red")
     time5.place(relx=0.5, rely=0.5, anchor='center')
-    btn = Button(screen11, text='Click me!', command=Score5)
+    btn = Button(screen11,bg = "lime", command=Score5)
     btn.place(x=f, y=e)
     z+=1
     b += 1
@@ -635,6 +652,17 @@ def Buttons5():
         mixer.music.load('TheWorthyMusic.mp3')
         mixer.music.play(-1)
     Onetime += 1
+    def LavatimeChecker2():
+        global Lavatime2
+        global screen11
+        if Lavatime2>0:
+            screen11.after(1000, LavatimeChecker2)
+            Lavatime2-=1
+        else:
+            global Heatdeath2
+            Heatdeath2+=1
+            GameOver5()
+    LavatimeChecker2()
     countdown5()
 #fix timer
 
@@ -652,7 +680,7 @@ def update_screen5():
     if t5 > 0:
         time5.config(text=t5)
         screen11.after(1000, update_screen5)
-        t -= 1
+        t5 -= 1
     else:
         GameOver5()
 
